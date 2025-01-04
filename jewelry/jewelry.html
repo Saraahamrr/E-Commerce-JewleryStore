@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewelry</title>
+    <link rel="stylesheet" href="jewelry.css">
+</head>
+<body>
+    <div class="header">
+        <p>DISCOVER OUR</p>
+        <h1>JEWELLERY</h1>
+        <button onclick="navigateToAll()">VIEW ALL</button>
+    </div>
+    <div class="categories">
+        <div class="img-container" onclick="navigateToBrac()">
+            <img src="./images/Bracelet.webp" class="background-img">
+            <div class="overlay-text">BRACELETS</div>
+        </div>
+        <div class="img-container" onclick="navigateToEar()"> 
+            <img src="./images/Earing.webp" class="background-img">
+            <div class="overlay-text">EARINGS</div>
+        </div>
+        <div class="img-container" onclick="navigateToNeck()">
+            <img src="./images/Necklace.webp" class="background-img">
+            <div class="overlay-text">NECKLACES</div>
+        </div>
+        <div class="img-container" onclick="navigateToRing()">
+            <img src="./images/Rings.webp" class="background-img">
+            <div class="overlay-text">RINGS</div>
+        </div>
+    </div>
+    <script src="jewelry.js"></script>
+</body>
+</html>
