@@ -4,9 +4,30 @@ function loginUser(event) {
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
 
+    // Define validation flag
+    let isValid = true;
+
+    // Clear previous error styling and messages
+    document.getElementById("username").style.border = "";
+    document.getElementById("password").style.border = "";
+    document.getElementById("username-error").textContent = "";
+    document.getElementById("password-error").textContent = "";
+
     // Basic validation to ensure both fields are filled
-    if (!username || !password) {
-        alert("Both username and password are required.");
+    if (!username) {
+        document.getElementById("username").style.border = "2px solid red";
+        document.getElementById("username-error").textContent = "Username is required.";
+        isValid = false;
+    }
+
+    if (!password) {
+        document.getElementById("password").style.border = "2px solid red";
+        document.getElementById("password-error").textContent = "Password is required.";
+        isValid = false;
+    }
+
+    // If the fields are invalid, stop further execution
+    if (!isValid) {
         return;
     }
 

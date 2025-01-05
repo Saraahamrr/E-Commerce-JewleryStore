@@ -9,10 +9,10 @@ const PORT = 3000;
 // Middleware to parse JSON data from the request body
 app.use(bodyParser.json());
 
-// Serve static files from the 'public' folder
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Registration route to handle user registration (existing code)
+
 app.post("/register", (req, res) => {
     const { username, password, email, phone } = req.body;
 
@@ -34,7 +34,13 @@ app.post("/register", (req, res) => {
 
         const users = data ? JSON.parse(data) : [];
 
-        // Add the new user
+        // Check if the user already exists
+        const userExists = users.find(u => u.email === email);
+        if (userExists) {
+            return res.status(400).send({ message: "User already enrolled!" });
+        }
+
+        // Add the new user if not already registered
         users.push(req.body);
 
         console.log("Updated users data:", users); // Log the updated users array
@@ -49,6 +55,9 @@ app.post("/register", (req, res) => {
         });
     });
 });
+
+
+
 
 
 // Login route to handle user login
