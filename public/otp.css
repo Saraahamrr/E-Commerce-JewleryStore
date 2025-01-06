@@ -1,64 +1,114 @@
 /* General page styles */
-*{
-    
+* {
     box-sizing: border-box;
-}
-
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fc;
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
     text-align: center;
+    color: #333;
+    padding: 0 15px;
 }
 
+/* Heading styles */
 h1 {
     color: #333;
     font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* Form container styles */
+.form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.form h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+/* OTP input field container */
+.otpverify {
+    display: block;
+    justify-content: space-between;
+    gap: 15px;
     margin-bottom: 20px;
 }
 
-/* Form container */
-.form{
-    background-color: white;
-    padding: 30px;
-    border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.otpverify #otp-inp {
+    display: block;
     width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+    border: 1px solid #d1d1d1;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+    margin-top: 10px;
 }
 
-.otpverify{
+#email{
+  
+    display: block;
     width: 100%;
-    display: flex;
-    gap: 20px;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+    border: 1px solid #d1d1d1;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+
 
 }
 
-.btn{
-    padding: 10px ;
-    margin: 10px 10px;
-    background-color: rgb(66, 153, 66);
+
+/* Input focus and hover states */
+#otp-inp:focus {
     outline: none;
+    border-color: #66cc66;
+    background-color: #e8f9e8;
+}
+
+/* Button styling */
+.btn {
+    display: block;
+    padding: 12px;
+    margin: 15px 0;
+    background-color: #429933;
+    color: white;
     border: none;
     border-radius: 30px;
-    width: 150px;
+    width: 160px;
     cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-input{
-    width: 100%;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    border: 1px solid rgb(125, 125, 240);
+.btn:hover {
+    background-color: #388f2f;
+    transform: scale(1.05);
 }
+
+.btn:active {
+    background-color: #327e1e;
+}
+
 

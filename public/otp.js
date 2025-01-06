@@ -2,7 +2,7 @@ let generatedOtp = ''; // Variable to store the generated OTP
 
 // Function to generate a random OTP
 function generateOtp() {
-    return Math.floor( Math.random() * 9000); // Generates a 6-digit OTP
+    return Math.floor( Math.random() * 9000); 
 }
 
 // Function to send OTP email
