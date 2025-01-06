@@ -23,6 +23,7 @@ body{
 }
 
 .header button{
+    cursor: pointer;
     background-color: black;
     color: white;
     border: none;
