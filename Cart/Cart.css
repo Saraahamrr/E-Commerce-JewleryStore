@@ -12,6 +12,7 @@ body {
   margin: 0 auto;
   text-align: center;
   padding-top: 10px;
+  transition: transform 0.5s;
 }
 header {
   display: flex;
@@ -25,6 +26,7 @@ header {
 }
 header .icon {
   position: relative;
+  cursor: pointer;
 }
 header .icon span {
   display: flex;
@@ -34,8 +36,7 @@ header .icon span {
   border-radius: 50%;
   position: absolute;
   top: 50%;
-  right: 2o0x;
-
+  left: 10px;
   width: 30px;
   height: 30px;
   background-color: red;
@@ -75,6 +76,7 @@ header .icon span {
   padding: 5px 10px;
   font-size: 14px;
   font-weight: 600;
+  border-radius: 10px;
   cursor: pointer;
 }
 .listProducts .item button:hover {
@@ -83,56 +85,87 @@ header .icon span {
 .listProducts .item button:active {
   background-color: #640000;
 }
-/*                 Cart.css 
-.cart {
+/* change into the main code too with prooduct list container */
+.cartTab {
+  width: 400px;
   margin-top: 50px;
   margin-bottom: 50px;
+  background-color: #333333;
+  color: white;
+  position: fixed;
+  inset: 0 -400px 0 auto;
+  display: grid;
+  grid-template-rows: 70px 1fr 70px;
+  transition: 0.5s;
 }
-.cart-title {
-  font-size: 24px;
+body.ShowCart .cartTab {
+  inset: 0 0 0 auto;
+}
+body.ShowCart .container {
+  filter: blur(5px);
+  transform: translate(-20px);
+}
+
+.cartTab h1 {
+  margin: 0;
   font-weight: 600;
-  margin-bottom: 20px;
+  padding: 20px;
 }
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+.cartTab .btn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
-.cart-item img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-}
-.cart-item-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 60%;
-}
-.cart-item-info h4 {
-  font-size: 18px;
-  font-weight: 600;
-}
-.cart-item-info p {
-  font-size: 14px;
-  font-weight: 400;
-}
-.cart-item-info button {
-  background-color: #f5f5f5;
+
+.cartTab .btn button {
+  background-color: #fcff42;
+  color: rgb(0, 0, 0);
   border: none;
   padding: 5px 10px;
+  font-family: poppins;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
 }
-.cart-item-info button:hover {
-  background-color: #e0e0e0;
+.cartTab .btn .closeCart {
+  background-color: #ffffff;
 }
-.cart-item-info button:active {
-  background-color: #d3d3d3;
+.cartTab .btn button:hover {
+  background-color: #333333;
 }
-.cart-item-info button:focus {
+.cartTab .btn button:active {
+  background-color: #5953aa;
+}
+.cartTab .btn button:focus {
   outline: none;
 }
 
-*/
+.cartTab .cartList .Item img {
+  width: 100%;
+}
+.cartTab .cartList .Item {
+  display: grid;
+  grid-template-columns: 70px 140px 70px 1fr;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+.cartList .quantity span {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-color: #e0e0e0;
+  color: #333333;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.cartList .quantity span:nth-child(2) {
+  background-color: transparent;
+  color: thistle;
+}
+.cartList .Item:nth-child(even) {
+  background-color: #5c5c5c;
+}
+.cartList {
+  overflow: auto; /* Scroll */
+}

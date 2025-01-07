@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="Cart.css" />
   </head>
 
-  <body>
+  <body class="">
+    <!-- ShowCart class is added -->
     <div class="container">
       <header>
         <div class="title">Product List</div>
@@ -27,12 +28,33 @@
           <img src="https://shorturl.at/YYTcS" alt="" />
           <div class="content">
             <h3>Product 1</h3>
-            <p class="proce">Price: $100</p>
+            <p class="price">Price: EGP100</p>
             <button class="addCart">Add to Cart</button>
           </div>
+        </div>
       </div>
     </div>
-
+    <div class="cartTab">
+      <h1>Shopping Cart</h1>
+      <div class="cartList">
+        <div class="Item">
+          <div class="image">
+            <img src="https://shorturl.at/YYTcS" alt="" />
+          </div>
+          <div class="name">Name</div>
+          <div class="price">1000 EGP</div>
+          <div class="quantity">
+            <span class="minus">-</span>
+            <span> 1 </span>
+            <span class="plus">+</span>
+          </div>
+        </div>
+      </div>
+      <div class="btn">
+        <button class="closeCart">Close Cart</button>
+        <button class="checkout">Checkout</button>
+      </div>
+    </div>
     <script src="Cart.js"></script>
   </body>
 </html>
