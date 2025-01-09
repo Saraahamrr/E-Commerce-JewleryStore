@@ -2,9 +2,8 @@ let generatedOtp = ''; // Variable to store the generated OTP
 
 // Function to generate a random OTP
 function generateOtp() {
-    return Math.floor(100000 + Math.random() * 900000); // Generates a 6-digit OTP
+    return Math.floor( Math.random() * 9000); 
 }
-
 // Function to send OTP email
 function sendOtp() {
     const email = document.getElementById('email').value; // Get email entered by the user
@@ -28,6 +27,7 @@ function sendOtp() {
         .then(function(response) {
             alert("OTP sent to your email!");
            
+            // Show the OTP verification input section
             document.querySelector('.otpverify').style.display = 'flex';
         }, function(error) {
             console.error("Error sending OTP: ", error);
@@ -35,18 +35,19 @@ function sendOtp() {
         });
 }
 
-
+// Function to verify OTP
 function verifyOtp() {
-    const enteredOtp = document.getElementById('otp-inp').value;
+    const enteredOtp = document.getElementById('otp-inp').value; // Get OTP entered by user
 
     if (enteredOtp === '') {
         alert("Please enter the OTP!");
         return;
     }
 
-    
+    // Compare entered OTP with the generated OTP
     if (enteredOtp == generatedOtp) {
         alert("OTP verified successfully!");
+       
     } else {
         alert("Invalid OTP! Please try again.");
     }
