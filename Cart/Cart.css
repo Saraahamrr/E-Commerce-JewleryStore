@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+.container {
+  width: 900px;
+  max-width: 90vw;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 10px;
+  transition: transform 0.5s;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+.header-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+header .icon {
+  position: relative;
+  cursor: pointer;
+}
+header .icon span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e0e0e0;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+}
+
+.listProducts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 50px;
+}
+.listProducts .item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+.listProducts .item:hover {
+  transform: translateY(-10px);
+}
+
+.listProducts .item img {
+  width: 100%;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+  object-fit: cover;
+}
+.listProducts .item h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.listProducts .item button {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.listProducts .item button:hover {
+  background-color: #333333;
+}
+.listProducts .item button:active {
+  background-color: #640000;
+}
+/* change into the main code too with prooduct list container */
+.cartTab {
+  width: 500px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #333333;
+  color: white;
+  position: fixed;
+  inset: 0 -500px 0 auto;
+  display: grid;
+  grid-template-rows: 70px 1fr 100px;
+  transition: 0.5s;
+}
+body.ShowCart .cartTab {
+  inset: 0 0 0 auto;
+}
+body.ShowCart .container {
+  filter: blur(5px);
+  transform: translate(-20px);
+}
+
+.cartTab h1 {
+  text-align: center;
+  margin: 0;
+  font-weight: 600;
+  padding: 20px;
+}
+.cartTab .btn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #5e4b4b;
+}
+.cartTab .total span {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.cartTab .total h3 {
+  margin-left: 10px;
+}
+.cartTab .btn button {
+  background-color: #fcff42;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 5px 10px;
+  font-family: poppins;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.cartTab .btn .closeCart {
+  background-color: #ffffff;
+}
+.cartTab .btn button:hover {
+  background-color: #333333;
+}
+.cartTab .btn button:active {
+  background-color: #5953aa;
+}
+.cartTab .btn button:focus {
+  outline: none;
+}
+
+.cartTab .cartList .Item img {
+  margin-left: 10px;
+  width: 100%;
+}
+.cartTab .cartList .Item {
+  display: grid;
+  grid-template-columns: 80px 145px 70px 100px 1fr;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+.cartList .quantity span {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-color: #e0e0e0;
+  color: #333333;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.cartTab .remove {
+  cursor: pointer;
+  font-size: 20px;
+}
+.cartList .quantity span:nth-child(2) {
+  background-color: transparent;
+  color: thistle;
+}
+.cartList .Item:nth-child(even) {
+  background-color: #5c5c5c;
+}
+.cartList {
+  overflow: auto; /* Scroll */
+}
+.cartList::-webkit-scrollbar {
+  width: 0;
+}
