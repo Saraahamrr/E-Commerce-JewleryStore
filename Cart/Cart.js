@@ -168,24 +168,29 @@ let totalPrice = 0;
     iconCartspan.textContent = totalQuantity;
 };
 
-/* cart button for quantity */
-  
-/* remove from cart icon */
-cartListHTML.addEventListener('click', function(e) {
+/* removing items from the cart */
+cartListHTML.addEventListener('click', function (e) {
     let positionClick = e.target;
-    if (positionClick.closest('remove')) {
-        let product_id = positionClick.parentElement.dataset.id;
+    let product_id;
+
+    // Handle remove button
+    if (positionClick.closest('.remove')) {
+        product_id = positionClick.closest('.Item').dataset.id;
         removeFromCart(product_id);
     }
-    let product_id = positionClick.parentElement.dataset.id;
 
+    // Handle plus button
     if (positionClick.classList.contains('plus')) {
+        product_id = positionClick.closest('.Item').dataset.id;
         let positioninCartList = cart.findIndex((value) => value.product_id == product_id);
         cart[positioninCartList].quantity += 1;
         showCart(cart);
         addCartToMemory();
     }
+
+    // Handle minus button
     if (positionClick.classList.contains('minus')) {
+        product_id = positionClick.closest('.Item').dataset.id;
         let positioninCartList = cart.findIndex((value) => value.product_id == product_id);
         if (cart[positioninCartList].quantity > 1) {
             cart[positioninCartList].quantity -= 1;
@@ -195,7 +200,7 @@ cartListHTML.addEventListener('click', function(e) {
         showCart(cart);
         addCartToMemory();
     }
-})
+});
 const removeFromCart = (product_id) => {
     let positioninCartList = cart.findIndex((value) => value.product_id == product_id);
     if (positioninCartList >= 0) {
