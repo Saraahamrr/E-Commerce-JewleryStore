@@ -51,12 +51,16 @@ const initApp = () => {
     .then(data => {
         listProduct = data;
         addDataToHTML();
+
+        ///// adding to product list by heba//////
+        if (localStorage.getItem('cart')) {
+            cart = JSON.parse(localStorage.getItem('cart'));
+            showCart(cart);
+        }
     })
 }
 
 initApp();
-
-
 
 /* 
 adding the products to the cart
@@ -73,7 +77,6 @@ listProductsHtml.addEventListener('click', function(e) {
 
 /* let things to be updated and needs action */
 let cartListHTML = document.querySelector('.cartList');
-
 let cart = []
 
 /* product_id , quantity */
@@ -89,6 +92,7 @@ let positioninCartList = cart.findIndex((value) => value.product_id == product_i
         }]
     }
     //console.log(cart);
+    //find index return -1 if not found
     else if (positioninCartList < 0){
         cart.push({
             product_id: product_id, 
@@ -99,7 +103,14 @@ let positioninCartList = cart.findIndex((value) => value.product_id == product_i
     else{
         cart[positioninCartList].quantity +=1;
     }
+    // showing the cart and it items 
     showCart(cart);
+    addCartToMemory();
+}
+/* saving data for loign again */
+/// declaring the function to add the cart to the memory
+const addCartToMemory = () => {
+localStorage.setItem('cart', JSON.stringify(cart));
 }
 
 /* show items + information into cart */
@@ -107,57 +118,92 @@ let positioninCartList = cart.findIndex((value) => value.product_id == product_i
 let iconCartspan = document.querySelector('.icon span');
 const showCart = () => {
 let totalQuantity = 0;
-// let totalPrice = 0;
+let totalPrice = 0;
     cartListHTML.innerHTML = '';
     if (cart.length > 0) {
         cart.forEach(item => {
             totalQuantity += item.quantity;
-            /*
-            totalPrice += product.price * item.quantity;
-           */
-
-
-            /*find the product in the list of products */
-            /*look for a way to make it more readable using let info item = product
-            minute 24 */
-            let product = listProduct.find((value) => value.id == item.product_id);
+            /* find index of the product in the list of products 
+            if using find I will not be able to acces index 
+            to update or remove the item in the cart*/
+            
             let newProduct = document.createElement('div');
             newProduct.classList.add('Item');
+            let positioninProductList = listProduct.findIndex((value) => value.id == item.product_id);
+            let infoItem = listProduct[positioninProductList];
+            totalPrice += infoItem.price * item.quantity;
+            newProduct.dataset.id = item.product_id;
             newProduct.innerHTML = `
                 <div class="image">
-                    <img src="${product.img}" alt="" />
+                    <img src="${infoItem.img}" alt="" />
                 </div>
-                <div class="name">${product.title}</div>
-                <div class="price">${product.price * item.quantity}  EGP</div>
+                <div class="name">${infoItem.title}</div>
+                <div class="price">${infoItem.price * item.quantity}  EGP</div>
                 <div class="quantity">
                     <span class="minus">-</span>
                     <span> ${item.quantity} </span>
                     <span class="plus">+</span>
                 </div>
-                <span class="remove">Remove</span>
-
-
+                <span class="remove">
+                <i class="fa-solid fa-xmark"></i>
+                </span>
             `;
             cartListHTML.appendChild(newProduct);
 
-        });
-/* total price not working  */
-        // let totalPrice = item.quantity * listProduct.find((value) => value.id == item.product_id).price;
-        // let newtotalPrice = document.createElement('div');
-        // newtotalPrice.classList.add('TotalPrice');
-        // newtotalPrice.innerHTML = `
-        //     <div class="total">Total</div>
-        //     <div class="price">${totalPrice} EGP</div>
-        // `;
-        // cartListHTML.appendChild(newtotalPrice);
+        })
+
+        let newtotalPrice = document.createElement('div');
+        newtotalPrice.classList.add('total');
+        newtotalPrice.innerHTML = `
+            <h3>
+            Total:
+            <span>${totalPrice}</span>
+            EGP
+            </h3>
+        `;
+        cartListHTML.appendChild(newtotalPrice);
+    
     }
+
     iconCartspan.textContent = totalQuantity;
 };
 
 /* cart button for quantity */
-
-/* saving data for loign again */
-
+  
 /* remove from cart icon */
+cartListHTML.addEventListener('click', function(e) {
+    let positionClick = e.target;
+    if (positionClick.closest('remove')) {
+        let product_id = positionClick.parentElement.dataset.id;
+        removeFromCart(product_id);
+    }
+    let product_id = positionClick.parentElement.dataset.id;
 
-/* edit scroll bar width in css when cart is full */
+    if (positionClick.classList.contains('plus')) {
+        let positioninCartList = cart.findIndex((value) => value.product_id == product_id);
+        cart[positioninCartList].quantity += 1;
+        showCart(cart);
+        addCartToMemory();
+    }
+    if (positionClick.classList.contains('minus')) {
+        let positioninCartList = cart.findIndex((value) => value.product_id == product_id);
+        if (cart[positioninCartList].quantity > 1) {
+            cart[positioninCartList].quantity -= 1;
+        } else {
+            removeFromCart(product_id);
+        }
+        showCart(cart);
+        addCartToMemory();
+    }
+})
+const removeFromCart = (product_id) => {
+    let positioninCartList = cart.findIndex((value) => value.product_id == product_id);
+    if (positioninCartList >= 0) {
+        cart.splice(positioninCartList, 1);
+        showCart(cart);
+        addCartToMemory();
+    }
+}
+
+
+

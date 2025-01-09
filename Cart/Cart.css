@@ -95,7 +95,7 @@ header .icon span {
   position: fixed;
   inset: 0 -500px 0 auto;
   display: grid;
-  grid-template-rows: 70px 1fr 70px 70px;
+  grid-template-rows: 70px 1fr 100px;
   transition: 0.5s;
 }
 body.ShowCart .cartTab {
@@ -123,6 +123,7 @@ body.ShowCart .container {
   align-items: center;
   text-align: center;
   padding: 20px;
+  background-color: #5e4b4b;
 }
 .cartTab .total span {
   margin-right: 10px;
@@ -137,7 +138,7 @@ body.ShowCart .container {
   border: none;
   padding: 5px 10px;
   font-family: poppins;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
 }
@@ -160,7 +161,7 @@ body.ShowCart .container {
 }
 .cartTab .cartList .Item {
   display: grid;
-  grid-template-columns: 70px 140px 70px 1fr;
+  grid-template-columns: 80px 145px 70px 100px 1fr;
   gap: 10px;
   text-align: center;
   align-items: center;
@@ -175,6 +176,10 @@ body.ShowCart .container {
   border-radius: 50%;
   cursor: pointer;
 }
+.cartTab .remove {
+  cursor: pointer;
+  font-size: 20px;
+}
 .cartList .quantity span:nth-child(2) {
   background-color: transparent;
   color: thistle;
@@ -184,4 +189,7 @@ body.ShowCart .container {
 }
 .cartList {
   overflow: auto; /* Scroll */
+}
+.cartList::-webkit-scrollbar {
+  width: 0;
 }
