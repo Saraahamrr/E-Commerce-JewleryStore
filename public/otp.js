@@ -4,7 +4,6 @@ let generatedOtp = ''; // Variable to store the generated OTP
 function generateOtp() {
     return Math.floor( Math.random() * 9000); 
 }
-
 // Function to send OTP email
 function sendOtp() {
     const email = document.getElementById('email').value; // Get email entered by the user
@@ -48,9 +47,7 @@ function verifyOtp() {
     // Compare entered OTP with the generated OTP
     if (enteredOtp == generatedOtp) {
         alert("OTP verified successfully!");
-        
-        // Proceed with user registration or success message
-        // You may call registerUser() or redirect user to another page after successful OTP
+       
     } else {
         alert("Invalid OTP! Please try again.");
     }
