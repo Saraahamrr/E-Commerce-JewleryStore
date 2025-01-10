@@ -21,6 +21,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            --pcolor:#800000;
         }
 
         .card {
@@ -32,12 +33,12 @@
         }
 
         .fas {
-            color: #fbc404;
+            color: var(--pcolor);
             font-size: 24px;
         }
 
         .fa-gem {
-            color: #fbc404;
+            color: var(--pcolor);
             margin-left: 10px;
             font-size: 40px;
         }
@@ -86,7 +87,7 @@
                     <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
                 </div>
             </div>
-            <button type="button" id="register-btn" class="btn btn-warning w-100">Sign up</button>
+            <button type="button" id="register-btn" class="btn  w-100" style="background-color: var(--pcolor); color: aliceblue;">Sign up</button>
             <p class="text-center mt-3">
                 Already have an account? <a href="login.html" target="_blank">Sign in </a>
             </p>

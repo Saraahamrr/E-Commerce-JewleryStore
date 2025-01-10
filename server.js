@@ -14,13 +14,14 @@ const PORT = 3000;
 // Middleware to parse JSON data from the request body to understand json
 app.use(bodyParser.json());
 
-// use files in public dir 
 
 app.use(express.static(path.join(__dirname, 'public')));
- 
+app.use(express.static(path.join(__dirname, 'home')));
+
+
 // make home / start point from home.html that inside public dir
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'home.html'));
+    res.sendFile(path.join(__dirname, 'home', 'index.html'));
 });
 
 // request body that contain username , password , phone , email
