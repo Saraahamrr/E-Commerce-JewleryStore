@@ -17,6 +17,7 @@ h1{
 }
 .card {
     padding: 16px;
+    cursor: pointer;
     margin: 16px;
     width: 200px;
     text-align: center;

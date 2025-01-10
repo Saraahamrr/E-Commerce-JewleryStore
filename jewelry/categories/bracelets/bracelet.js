@@ -30,6 +30,9 @@ getBracelets('bracelets').then(bracelets => {
     bracelets.forEach(bracelet => {
         const card = document.createElement('div');
         card.className = 'card';
+        card.addEventListener('click', function () {
+            window.location.href = `../productDetails/productD.html?id=${bracelet.id}`;
+        });
 
         const img = document.createElement('img');
         img.src = bracelet.img;

@@ -1,0 +1,40 @@
+.product-details{
+    display: flex;
+}
+.det{
+    margin-top: 120px;
+}
+.image{
+    width: 600px;
+}
+.title{
+    color: rgb(24, 23, 23);
+}
+.description{
+    width: 600px;
+    color: rgb(66, 66, 66);
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+.price{
+    color: red;
+    font-weight: 900;
+    margin-bottom: 60px;
+}
+.date{
+    font-size: 12px;
+    color: gray;
+}
+.addToCart{
+    background-color: rgb(0, 0, 43);
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 70px;
+}
+
+.last{
+    display: flex;
+    justify-content: space-between;
+}
