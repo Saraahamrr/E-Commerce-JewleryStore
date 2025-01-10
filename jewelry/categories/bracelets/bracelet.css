@@ -18,6 +18,10 @@ h1{
 .card {
     padding: 16px;
     margin: 16px;
+<<<<<<< HEAD
+=======
+    cursor: pointer;
+>>>>>>> master
     width: 200px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

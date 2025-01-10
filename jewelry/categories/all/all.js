@@ -34,6 +34,12 @@ fetch('../jewellery.json')
     products.forEach(product => {
         const card = document.createElement('div');
         card.className = 'card';
+<<<<<<< HEAD
+=======
+        card.addEventListener('click', function () {
+            window.location.href = `../productDetails/productD.html?id=${product.id}`;
+        });
+>>>>>>> master
 
         const img = document.createElement('img');
         img.src = product.img;

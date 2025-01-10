@@ -30,6 +30,12 @@ getRings('rings').then(rings => {
     rings.forEach(ring => {
         const card = document.createElement('div');
         card.className = 'card';
+<<<<<<< HEAD
+=======
+        card.addEventListener('click', function () {
+            window.location.href = `../productDetails/productD.html?id=${ring.id}`;
+        });
+>>>>>>> master
 
         const img = document.createElement('img');
         img.src = ring.img;
