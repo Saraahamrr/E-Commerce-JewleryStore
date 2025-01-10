@@ -48,6 +48,9 @@ body{
     text-decoration: none;
     margin-right: 50px;
 }
+.addToCart:hover{
+    background-color: #f5e5cc; 
+}
 
 .last{
     display: flex;
