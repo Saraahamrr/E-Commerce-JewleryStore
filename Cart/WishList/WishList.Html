@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart & Wishlist</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="icon">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>0</span>
+      </div>
+      <div class="wishlist-icon">
+        <i class="fa-solid fa-heart"></i>
+      </div>
+    </header>
+
+    <main>
+      <section class="products">
+        <h1>Our Products</h1>
+        <div class="listProducts">
+          <!-- Products will be dynamically added here -->
+        </div>
+      </section>
+
+      <section class="cart">
+        <div class="cartHeader">
+          <h2>Shopping Cart</h2>
+          <button class="closeCart">Close</button>
+        </div>
+        <div class="cartList">
+          <!-- Cart items will be dynamically added here -->
+        </div>
+      </section>
+
+      <section class="wishlist">
+        <h2>My Wishlist</h2>
+        <div class="wishlistItems">
+          <!-- Wishlist items will be dynamically added here -->
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

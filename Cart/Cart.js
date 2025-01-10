@@ -41,10 +41,11 @@ const addDataToHTML = () => {
                 </button>
             `;
             listProductsHtml.appendChild(newProduct);
+            console.log(newProduct);
         });
     }
 };
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const initApp = () => {
     fetch(`jewellery.json`)
     .then (response => response.json())
@@ -72,6 +73,7 @@ listProductsHtml.addEventListener('click', function(e) {
         /*if the place we are clicking on has the class addcart do this */
         let product_id = positionClick.parentElement.dataset.id;
         addToCart(product_id);
+        console.log(product_id);
     }
 })
 
