@@ -30,12 +30,9 @@ getNecklaces('necklaces').then(necklaces => {
     necklaces.forEach(necklace => {
         const card = document.createElement('div');
         card.className = 'card';
-<<<<<<< HEAD
-=======
         card.addEventListener('click', function () {
             window.location.href = `../productDetails/productD.html?id=${necklace.id}`;
         });
->>>>>>> master
 
         const img = document.createElement('img');
         img.src = necklace.img;

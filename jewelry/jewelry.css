@@ -1,6 +1,10 @@
+*{
+    font-family: Garamond, serif;
+}
 body{
     margin: 0;
     padding: 0;
+    font-family: Garamond, serif;
 }
 
 .header{
@@ -8,7 +12,7 @@ body{
   flex-direction: column;
   justify-content: center; 
   align-items: center;
-  background-color: rgb(243, 241, 241);
+  background-color: #f5e5cc;
   padding-bottom: 60px;
   padding-top: 40px;
 }
@@ -24,11 +28,15 @@ body{
 
 .header button{
     cursor: pointer;
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    margin-top: 10px;
+    position: relative;
+    padding: 10px 30px;
+    border: 2px solid #d1b28f; 
+     border-radius: 50px;  
+     background-color: #d1b28f;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-top: 50px;
 }
 
 
