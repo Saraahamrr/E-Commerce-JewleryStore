@@ -39,7 +39,7 @@ fetch('../jewellery.json')
         });
 
         const img = document.createElement('img');
-        img.src = product.img;
+        img.src = `../images/${product.img}`; 
 
         const title = document.createElement('h3');
         title.className = 'product-title';
@@ -53,6 +53,10 @@ fetch('../jewellery.json')
         addToCart.className = 'addToCart';
         addToCart.textContent = 'Add To Cart';
         //handle addToCart feature here
+        addToCart.addEventListener('click', (e) => {
+            e.stopPropagation();
+            addToCartHandler(product.id)
+        });
 
         card.appendChild(img);
         card.appendChild(title);
@@ -65,3 +69,17 @@ fetch('../jewellery.json')
 .catch(error => {
     console.error('Error fetching the JSON file:', error);
 });
+
+const addToCartHandler = (productId) => {
+    const sortedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const productIndex = sortedCart.findIndex(item => item.product_id === productId);
+
+    if(productIndex > -1){
+        sortedCart[productIndex].quantity += 1;
+    } else{
+        sortedCart.push({product_id: productId, quantity: 1});
+    }
+
+    localStorage.setItem('cart', JSON.stringify(sortedCart));
+    alert('Product added to cart');
+}
