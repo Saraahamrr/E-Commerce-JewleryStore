@@ -9,42 +9,47 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function () {
-            emailjs.init("ksn6vDhQl5E3AlTWX"); 
+            emailjs.init("ksn6vDhQl5E3AlTWX");
         })();
     </script>
-    <script src="otp.js"></script>
 </head>
 
 <body>
     <div class="form">
         <h1>OTP Verification</h1>
-        
+
         <!-- Email field shown as read-only -->
         <input type="email" id="email" placeholder="Email" readonly>
-        
+
         <!-- OTP input field, hidden initially -->
         <div class="otpverify">
             <input type="text" id="otp-inp" placeholder="Enter OTP">
             <button class="btn" id="otp-btn" onclick="verifyOtp()">Verify</button>
         </div>
-        
-       
+
         <button class="btn" onclick="sendOtp()">Send OTP</button>
     </div>
 
     <script>
-        // Load email from localStorage and populate the email field
+        let generatedOtp = '';
+
+        //get entered email in reg form
         document.addEventListener("DOMContentLoaded", function () {
             const email = localStorage.getItem("email");
             if (email) {
                 document.getElementById("email").value = email;
             } else {
                 alert("No email found. Please register first.");
-                window.location.href = "Reg.html"; 
+                window.location.href = "Reg.html";
             }
         });
 
-        // Function to send OTP
+        // generate OTP
+        function generateOtp() {
+            return Math.floor(1000 + Math.random() * 9000); // Generate 4-digit OTP
+        }
+
+        //  send OTP
         function sendOtp() {
             const email = document.getElementById("email").value;
 
@@ -56,8 +61,9 @@
             // Generate a random OTP
             const generatedOtp = Math.floor(1000 + Math.random() * 9000);
 
-            // Save OTP to localStorage for verification
+            // Save OTP and the timestamp to localStorage
             localStorage.setItem("generatedOtp", generatedOtp);
+            localStorage.setItem("otpTimestamp", Date.now()); // Save current timestamp
 
             // Send OTP via EmailJS
             const params = { email, otp: generatedOtp };
@@ -73,42 +79,60 @@
                 });
         }
 
+
         // Function to verify OTP
         function verifyOtp() {
-    const enteredOtp = document.getElementById("otp-inp").value;
-    const generatedOtp = localStorage.getItem("generatedOtp");
+            const enteredOtp = document.getElementById("otp-inp").value;
 
-    if (enteredOtp === generatedOtp) {
-        alert("OTP verified successfully!");
+            if (enteredOtp === '') {
+                alert("Please enter the OTP!");
+                return;
+            }
 
-        // Get user data
-        const userData = {
-            username: localStorage.getItem("username"),
-            email: localStorage.getItem("email"),
-            phone: localStorage.getItem("phone")
-        };
+            // Get the generated OTP and its timestamp
+            const generatedOtp = localStorage.getItem("generatedOtp");
+            const otpTimestamp = localStorage.getItem("otpTimestamp");
 
-        // Send verified user data to the backend
-        fetch('http://localhost:3000/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userData)
-        })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message);
-                // Redirect or clear localStorage after registration
-                localStorage.clear();
-                window.location.href = 'success.html'; // Replace with your success page
-            })
-            .catch(error => {
-                console.error('Error registering user:', error);
-                alert('Failed to register user. Please try again.');
-            });
-    } else {
-        alert("Invalid OTP. Please try again.");
-    }
-}
+            // Check if OTP exists and is not expired
+            const currentTime = Date.now(); // Current timestamp in milliseconds
+            const otpExpiryTime = 30 * 1000; // 30 seconds in milliseconds
+
+            if (!otpTimestamp || currentTime - otpTimestamp > otpExpiryTime) {
+                alert("OTP has expired. Please request a new one.");
+                return;
+            }
+
+            // Compare the entered OTP with the generated OTP
+            if (enteredOtp == generatedOtp) {
+                alert("OTP verified successfully!");
+
+                // Get user data
+                const userData = {
+                    username: localStorage.getItem("username"),
+                    email: localStorage.getItem("email"),
+                    phone: localStorage.getItem("phone")
+                };
+
+                // Send verified user data to the backend
+                fetch('http://localhost:3000/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        localStorage.clear();
+                        window.location.href = 'success.html'; // Redirect to success page
+                    })
+                    .catch(error => {
+                        console.error('Error registering user:', error);
+                        alert('Failed to register user. Please try again.');
+                    });
+            } else {
+                alert("Invalid OTP. Please try again.");
+            }
+        }
 
     </script>
 </body>

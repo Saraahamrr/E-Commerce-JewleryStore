@@ -1,5 +1,5 @@
 
-// easy way to build server web
+// easy way to build server web in localhost
 const express = require("express");
 // library make data in reques we can use it
 const bodyParser = require("body-parser");

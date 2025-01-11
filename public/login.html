@@ -11,27 +11,42 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
     <script defer src="login.js"></script>
     <style>
-        /* Uncommented styles */
-
+        /* Body styling */
         body {
-            /* background-image: url('https://img.freepik.com/premium-vector/yellow-crystal-gem-design-vector_53876-172300.jpg?w=740'); */
-            background-color: #f2eee7;
-            background-size: cover;
-            background-position: center;
             display: flex;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             height: 100vh;
-            --pcolor: #800000;
-   
+            
+            --pcolor: #c25e12;
+            padding: 0;
+            margin: 0;
+            background-color: #f5e5cc;
+
+
+
         }
 
-        
+        .card {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 30px;
+        }
+
+
+        .fa-gem {
+            color: var(--pcolor);
+            margin-left: 10px;
+            font-size: 40px;
+        }
 
         .fas {
             color: var(--pcolor);
             font-size: 24px;
         }
 
+        
         .input-group-text {
             background-color: transparent;
             border: none;
@@ -42,10 +57,9 @@
             width: 100%;
         }
 
-        .fa-gem {
-            color: var(--pcolor);
-            margin-left: 10px;
-            font-size: 40px;
+        .input-group .fa-user{
+            margin-left: 5px;
+            font-size: 20px;
         }
 
 
@@ -55,14 +69,34 @@
         }
 
         nav {
-            background-color: #f5e5cc;
-            width: 100%;
-            position: fixed;
-            align-items: center;
-            z-index: 1000;
-            margin: 0;
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #f5e5cc;
+            height: 130px;
+            width: 100%;
+
         }
+
+        .fa-magnifying-glass,.fa-user,.fa-cart-plus{
+            margin: 10px;
+            font-size: 20px;
+            color: brown;
+        }
+
+
+
+        .left-content,
+        .right-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .center-image {
+            margin: 0 auto;
+        }
+
 
         .container-fluid {
             width: 90% !important;
@@ -152,18 +186,19 @@
             outline: none;
         }
 
-        .icons-container {
+        #nav-icons .icons-container {
             display: flex;
             justify-content: space-around;
             width: 100%;
         }
 
-        .icon {
+        #nav-icons .icon {
             color: #282328 !important;
-            font-size: 1.1rem;
+            font-size: 1.5rem;
+            /* margin: 10px; */
         }
 
-        .icon:hover {
+        #nav-icons .icon:hover {
             color: #d1b28f !important;
         }
 
@@ -173,7 +208,8 @@
     </style>
 </head>
 
-<body>
+<body >
+
 
     <nav class="navbar navbar-expand-lg ">
 
@@ -243,9 +279,11 @@
             <div class="right-content search-container">
                 <form class="d-flex search-container justify-content-between align-items-center" role="search">
                     <input class="me-2 forminput" type="search" placeholder="Search" aria-label="Search">
-                    <div class="d-flex justify-content-evenly align-items-center icons-container">
+                    <div id="nav-icons" class="d-flex justify-content-evenly align-items-center icons-container">
+
+
                         <i class="fa-solid fa-magnifying-glass icon"></i>
-                        <a href="/login.html" target="_blank"><i class="fa-solid fa-user icon"></i></a>
+                        <a href="/login.html"><i class="fa-solid fa-user icon"></i></a>
 
                         <i class="fa-solid fa-cart-plus icon"></i>
                     </div>
@@ -254,6 +292,7 @@
         </div>
         </div>
     </nav>
+
 
     <div class="card shadow p-4" style="max-width: 600px; width: 100%; border-radius: 30px;">
         <h2 class="text-center mb-4">Welcome back <span><i class="fa-solid fa-gem"></i></span> </h2>
