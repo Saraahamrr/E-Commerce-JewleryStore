@@ -83,3 +83,8 @@ const addToCartHandler = (productId) => {
     localStorage.setItem('cart', JSON.stringify(sortedCart));
     alert('Product added to cart');
 }
+
+//handle jewelry tab 
+function jewelry(){
+    window.location.href = 'jewelry/jewelry.html';
+}
