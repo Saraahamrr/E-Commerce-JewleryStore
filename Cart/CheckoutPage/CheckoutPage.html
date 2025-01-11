@@ -2,20 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
-    <!--  All snippets are MIT license http://bootdey.com/license -->
     <title>
-      Ecommerce checkout with customer info and order summary - Bootdey.com
+Checkout Page
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./Checkout.css" />
     <style type="text/css">
+
       body {
-        margin-top: 20px;
-        background-color: #f1f3f7;
+        margin: 0px;
+        padding: 8px;
+        background: #f5e5cc;
       }
 
       .card {
@@ -57,7 +58,7 @@
       }
 
       .activity-checkout .checkout-item:first-child {
-        border-color: #3b76e1;
+        border-color: #e1933b;
       }
 
       .activity-checkout .checkout-item:first-child:after {
@@ -182,7 +183,7 @@
       }
 
       .card-radio-input:checked + .card-radio {
-        border-color: #3b76e1 !important;
+        border-color: #e1933b !important;
       }
 
       .font-size-16 {
@@ -244,7 +245,9 @@
         padding: 1px 22px;
         font-size: 13px;
         font-weight: 500;
+
       }
+
     </style>
   </head>
   <body>
@@ -258,7 +261,90 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <!-- Navbar adding-->
+    <nav class="navbar navbar-expand-lg ">
 
+      <div class="container-fluid d-flex justify-content-between align-items-center ">
+          <!-- lists -->
+          <div class="left-content">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#about">About Us</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          jewelry
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Necklaces</a></li>
+                          <li><a class="dropdown-item" href="#">Rings</a></li>
+                          <li><a class="dropdown-item" href="#">Pendants</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+          <!-- list in mobile -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+              aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- body of responsive -->
+          <div class="offcanvas offcanvas-end mobile-lists" tabindex="-1" id="offcanvasNavbar"
+              aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">About Us</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                              aria-expanded="false">Categories</a>
+                          <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Necklaces</a></li>
+                              <li><a class="dropdown-item" href="#">Rings</a></li>
+                              <li><a class="dropdown-item" href="#">Pendants</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">Disabled</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          <!-- image logo -->
+          <div class="center-image d-flex justify-content-center logo-container">
+              <img src="images/logo.png" alt="Logo" class="img-fluid logo">
+          </div>
+
+          <!-- search -->
+          <div class="right-content search-container">
+              <form class="d-flex search-container justify-content-between align-items-center" role="search">
+                  <input class="me-2 forminput" type="search" placeholder="Search" aria-label="Search">
+                  <div class="d-flex justify-content-evenly align-items-center icons-container">
+                      <i class="fa-solid fa-magnifying-glass icon"></i>
+                      <i class="fa-solid fa-user icon"></i>
+                      <div class="icon">
+                        <i class="fa-solid fa-cart-plus icon"></i>
+                        <span class="badge bg-danger rounded-pill"></span>
+                      </div>
+                  </div>
+
+              </form>
+          </div>
+      </div>
+      </div>
+  </nav>
+    <!-- Navbar adding-->
     <div class="container">
       <div class="row">
         <div class="col-xl-8">
@@ -267,7 +353,7 @@
               <ol class="activity-checkout mb-0 px-4 mt-3">
                 <li class="checkout-item">
                   <div class="avatar checkout-icon p-1">
-                    <div class="avatar-title rounded-circle bg-primary">
+                    <div class="avatar-title rounded-circle bg-secondary">
                       <i class="bx bxs-receipt text-white font-size-20"></i>
                     </div>
                   </div>
@@ -275,7 +361,7 @@
                     <div>
                       <h5 class="font-size-16 mb-1">Billing Info</h5>
                       <p class="text-muted text-truncate mb-4">
-                        Sed ut perspiciatis unde omnis iste
+                        Please Enter your billing information
                       </p>
                       <div class="mb-3">
                         <form>
@@ -293,6 +379,7 @@
                                     placeholder="Enter name"
                                   />
                                 </div>
+                                <p id="billing-name-error" class="error"></p>
                               </div>
                               <div class="col-lg-4">
                                 <div class="mb-3">
@@ -305,9 +392,13 @@
                                     type="email"
                                     class="form-control"
                                     id="billing-email-address"
-                                    placeholder="Enter email"
+                                    placeholder="Ex: user@gmail.com"
                                   />
                                 </div>
+                                <p
+                                  id="billing-email-address-error"
+                                  class="error"
+                                ></p>
                               </div>
                               <div class="col-lg-4">
                                 <div class="mb-3">
@@ -318,9 +409,10 @@
                                     type="text"
                                     class="form-control"
                                     id="billing-phone"
-                                    placeholder="Enter Phone no."
+                                    placeholder="Enter Phone no : +20"
                                   />
                                 </div>
+                                <p id="billing-phone-error" class="error"></p>
                               </div>
                             </div>
 
@@ -345,13 +437,469 @@
                                     title="Country"
                                   >
                                     <option value="0">Select Country</option>
-                                    <option value="AF">Afghanistan</option>
-                                    <option value="AL">Albania</option>
-                                    <option value="DZ">Algeria</option>
-                                    <option value="AS">American Samoa</option>
-                                    <option value="AD">Andorra</option>
-                                    <option value="AO">Angola</option>
-                                    <option value="AI">Anguilla</option>
+                                    <option value="Afghanistan">
+                                      Afghanistan
+                                    </option>
+                                    <option value="Åland Islands">
+                                      Åland Islands
+                                    </option>
+                                    <option value="Albania">Albania</option>
+                                    <option value="Algeria">Algeria</option>
+                                    <option value="American Samoa">
+                                      American Samoa
+                                    </option>
+                                    <option value="Andorra">Andorra</option>
+                                    <option value="Angola">Angola</option>
+                                    <option value="Anguilla">Anguilla</option>
+                                    <option value="Antarctica">
+                                      Antarctica
+                                    </option>
+                                    <option value="Antigua and Barbuda">
+                                      Antigua and Barbuda
+                                    </option>
+                                    <option value="Argentina">Argentina</option>
+                                    <option value="Armenia">Armenia</option>
+                                    <option value="Aruba">Aruba</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Austria">Austria</option>
+                                    <option value="Azerbaijan">
+                                      Azerbaijan
+                                    </option>
+                                    <option value="Bahamas">Bahamas</option>
+                                    <option value="Bahrain">Bahrain</option>
+                                    <option value="Bangladesh">
+                                      Bangladesh
+                                    </option>
+                                    <option value="Barbados">Barbados</option>
+                                    <option value="Belarus">Belarus</option>
+                                    <option value="Belgium">Belgium</option>
+                                    <option value="Belize">Belize</option>
+                                    <option value="Benin">Benin</option>
+                                    <option value="Bermuda">Bermuda</option>
+                                    <option value="Bhutan">Bhutan</option>
+                                    <option value="Bolivia">Bolivia</option>
+                                    <option value="Bosnia and Herzegovina">
+                                      Bosnia and Herzegovina
+                                    </option>
+                                    <option value="Botswana">Botswana</option>
+                                    <option value="Bouvet Island">
+                                      Bouvet Island
+                                    </option>
+                                    <option value="Brazil">Brazil</option>
+                                    <option
+                                      value="British Indian Ocean Territory"
+                                    >
+                                      British Indian Ocean Territory
+                                    </option>
+                                    <option value="Brunei Darussalam">
+                                      Brunei Darussalam
+                                    </option>
+                                    <option value="Bulgaria">Bulgaria</option>
+                                    <option value="Burkina Faso">
+                                      Burkina Faso
+                                    </option>
+                                    <option value="Burundi">Burundi</option>
+                                    <option value="Cambodia">Cambodia</option>
+                                    <option value="Cameroon">Cameroon</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Cape Verde">
+                                      Cape Verde
+                                    </option>
+                                    <option value="Cayman Islands">
+                                      Cayman Islands
+                                    </option>
+                                    <option value="Central African Republic">
+                                      Central African Republic
+                                    </option>
+                                    <option value="Chad">Chad</option>
+                                    <option value="Chile">Chile</option>
+                                    <option value="China">China</option>
+                                    <option value="Christmas Island">
+                                      Christmas Island
+                                    </option>
+                                    <option value="Cocos (Keeling) Islands">
+                                      Cocos (Keeling) Islands
+                                    </option>
+                                    <option value="Colombia">Colombia</option>
+                                    <option value="Comoros">Comoros</option>
+                                    <option value="Congo">Congo</option>
+                                    <option
+                                      value="Congo, The Democratic Republic of The"
+                                    >
+                                      Congo, The Democratic Republic of The
+                                    </option>
+                                    <option value="Cook Islands">
+                                      Cook Islands
+                                    </option>
+                                    <option value="Costa Rica">
+                                      Costa Rica
+                                    </option>
+                                    <option value="Cote D'ivoire">
+                                      Cote D'ivoire
+                                    </option>
+                                    <option value="Croatia">Croatia</option>
+                                    <option value="Cuba">Cuba</option>
+                                    <option value="Cyprus">Cyprus</option>
+                                    <option value="Czech Republic">
+                                      Czech Republic
+                                    </option>
+                                    <option value="Denmark">Denmark</option>
+                                    <option value="Djibouti">Djibouti</option>
+                                    <option value="Dominica">Dominica</option>
+                                    <option value="Dominican Republic">
+                                      Dominican Republic
+                                    </option>
+                                    <option value="Ecuador">Ecuador</option>
+                                    <option value="Egypt">Egypt</option>
+                                    <option value="El Salvador">
+                                      El Salvador
+                                    </option>
+                                    <option value="Equatorial Guinea">
+                                      Equatorial Guinea
+                                    </option>
+                                    <option value="Eritrea">Eritrea</option>
+                                    <option value="Estonia">Estonia</option>
+                                    <option value="Ethiopia">Ethiopia</option>
+                                    <option value="Falkland Islands (Malvinas)">
+                                      Falkland Islands (Malvinas)
+                                    </option>
+                                    <option value="Faroe Islands">
+                                      Faroe Islands
+                                    </option>
+                                    <option value="Fiji">Fiji</option>
+                                    <option value="Finland">Finland</option>
+                                    <option value="France">France</option>
+                                    <option value="French Guiana">
+                                      French Guiana
+                                    </option>
+                                    <option value="French Polynesia">
+                                      French Polynesia
+                                    </option>
+                                    <option value="French Southern Territories">
+                                      French Southern Territories
+                                    </option>
+                                    <option value="Gabon">Gabon</option>
+                                    <option value="Gambia">Gambia</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Ghana">Ghana</option>
+                                    <option value="Gibraltar">Gibraltar</option>
+                                    <option value="Greece">Greece</option>
+                                    <option value="Greenland">Greenland</option>
+                                    <option value="Grenada">Grenada</option>
+                                    <option value="Guadeloupe">
+                                      Guadeloupe
+                                    </option>
+                                    <option value="Guam">Guam</option>
+                                    <option value="Guatemala">Guatemala</option>
+                                    <option value="Guernsey">Guernsey</option>
+                                    <option value="Guinea">Guinea</option>
+                                    <option value="Guinea-bissau">
+                                      Guinea-bissau
+                                    </option>
+                                    <option value="Guyana">Guyana</option>
+                                    <option value="Haiti">Haiti</option>
+                                    <option
+                                      value="Heard Island and Mcdonald Islands"
+                                    >
+                                      Heard Island and Mcdonald Islands
+                                    </option>
+                                    <option
+                                      value="Holy See (Vatican City State)"
+                                    >
+                                      Holy See (Vatican City State)
+                                    </option>
+                                    <option value="Honduras">Honduras</option>
+                                    <option value="Hong Kong">Hong Kong</option>
+                                    <option value="Hungary">Hungary</option>
+                                    <option value="Iceland">Iceland</option>
+                                    <option value="India">India</option>
+                                    <option value="Indonesia">Indonesia</option>
+                                    <option value="Iran, Islamic Republic of">
+                                      Iran, Islamic Republic of
+                                    </option>
+                                    <option value="Iraq">Iraq</option>
+                                    <option value="Ireland">Ireland</option>
+                                    <option value="Isle of Man">
+                                      Isle of Man
+                                    </option>
+                                    <option value="Israel">Israel</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Jamaica">Jamaica</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Jersey">Jersey</option>
+                                    <option value="Jordan">Jordan</option>
+                                    <option value="Kazakhstan">
+                                      Kazakhstan
+                                    </option>
+                                    <option value="Kenya">Kenya</option>
+                                    <option value="Kiribati">Kiribati</option>
+                                    <option
+                                      value="Korea, Democratic People's Republic of"
+                                    >
+                                      Korea, Democratic People's Republic of
+                                    </option>
+                                    <option value="Korea, Republic of">
+                                      Korea, Republic of
+                                    </option>
+                                    <option value="Kuwait">Kuwait</option>
+                                    <option value="Kyrgyzstan">
+                                      Kyrgyzstan
+                                    </option>
+                                    <option
+                                      value="Lao People's Democratic Republic"
+                                    >
+                                      Lao People's Democratic Republic
+                                    </option>
+                                    <option value="Latvia">Latvia</option>
+                                    <option value="Lebanon">Lebanon</option>
+                                    <option value="Lesotho">Lesotho</option>
+                                    <option value="Liberia">Liberia</option>
+                                    <option value="Libyan Arab Jamahiriya">
+                                      Libyan Arab Jamahiriya
+                                    </option>
+                                    <option value="Liechtenstein">
+                                      Liechtenstein
+                                    </option>
+                                    <option value="Lithuania">Lithuania</option>
+                                    <option value="Luxembourg">
+                                      Luxembourg
+                                    </option>
+                                    <option value="Macao">Macao</option>
+                                    <option
+                                      value="Macedonia, The Former Yugoslav Republic of"
+                                    >
+                                      Macedonia, The Former Yugoslav Republic of
+                                    </option>
+                                    <option value="Madagascar">
+                                      Madagascar
+                                    </option>
+                                    <option value="Malawi">Malawi</option>
+                                    <option value="Malaysia">Malaysia</option>
+                                    <option value="Maldives">Maldives</option>
+                                    <option value="Mali">Mali</option>
+                                    <option value="Malta">Malta</option>
+                                    <option value="Marshall Islands">
+                                      Marshall Islands
+                                    </option>
+                                    <option value="Martinique">
+                                      Martinique
+                                    </option>
+                                    <option value="Mauritania">
+                                      Mauritania
+                                    </option>
+                                    <option value="Mauritius">Mauritius</option>
+                                    <option value="Mayotte">Mayotte</option>
+                                    <option value="Mexico">Mexico</option>
+                                    <option
+                                      value="Micronesia, Federated States of"
+                                    >
+                                      Micronesia, Federated States of
+                                    </option>
+                                    <option value="Moldova, Republic of">
+                                      Moldova, Republic of
+                                    </option>
+                                    <option value="Monaco">Monaco</option>
+                                    <option value="Mongolia">Mongolia</option>
+                                    <option value="Montenegro">
+                                      Montenegro
+                                    </option>
+                                    <option value="Montserrat">
+                                      Montserrat
+                                    </option>
+                                    <option value="Morocco">Morocco</option>
+                                    <option value="Mozambique">
+                                      Mozambique
+                                    </option>
+                                    <option value="Myanmar">Myanmar</option>
+                                    <option value="Namibia">Namibia</option>
+                                    <option value="Nauru">Nauru</option>
+                                    <option value="Nepal">Nepal</option>
+                                    <option value="Netherlands">
+                                      Netherlands
+                                    </option>
+                                    <option value="Netherlands Antilles">
+                                      Netherlands Antilles
+                                    </option>
+                                    <option value="New Caledonia">
+                                      New Caledonia
+                                    </option>
+                                    <option value="New Zealand">
+                                      New Zealand
+                                    </option>
+                                    <option value="Nicaragua">Nicaragua</option>
+                                    <option value="Niger">Niger</option>
+                                    <option value="Nigeria">Nigeria</option>
+                                    <option value="Niue">Niue</option>
+                                    <option value="Norfolk Island">
+                                      Norfolk Island
+                                    </option>
+                                    <option value="Northern Mariana Islands">
+                                      Northern Mariana Islands
+                                    </option>
+                                    <option value="Norway">Norway</option>
+                                    <option value="Oman">Oman</option>
+                                    <option value="Pakistan">Pakistan</option>
+                                    <option value="Palau">Palau</option>
+                                    <option
+                                      value="Palestinian Territory, Occupied"
+                                    >
+                                      Palestinian Territory, Occupied
+                                    </option>
+                                    <option value="Panama">Panama</option>
+                                    <option value="Papua New Guinea">
+                                      Papua New Guinea
+                                    </option>
+                                    <option value="Paraguay">Paraguay</option>
+                                    <option value="Peru">Peru</option>
+                                    <option value="Philippines">
+                                      Philippines
+                                    </option>
+                                    <option value="Pitcairn">Pitcairn</option>
+                                    <option value="Poland">Poland</option>
+                                    <option value="Portugal">Portugal</option>
+                                    <option value="Puerto Rico">
+                                      Puerto Rico
+                                    </option>
+                                    <option value="Qatar">Qatar</option>
+                                    <option value="Reunion">Reunion</option>
+                                    <option value="Romania">Romania</option>
+                                    <option value="Russian Federation">
+                                      Russian Federation
+                                    </option>
+                                    <option value="Rwanda">Rwanda</option>
+                                    <option value="Saint Helena">
+                                      Saint Helena
+                                    </option>
+                                    <option value="Saint Kitts and Nevis">
+                                      Saint Kitts and Nevis
+                                    </option>
+                                    <option value="Saint Lucia">
+                                      Saint Lucia
+                                    </option>
+                                    <option value="Saint Pierre and Miquelon">
+                                      Saint Pierre and Miquelon
+                                    </option>
+                                    <option
+                                      value="Saint Vincent and The Grenadines"
+                                    >
+                                      Saint Vincent and The Grenadines
+                                    </option>
+                                    <option value="Samoa">Samoa</option>
+                                    <option value="San Marino">
+                                      San Marino
+                                    </option>
+                                    <option value="Sao Tome and Principe">
+                                      Sao Tome and Principe
+                                    </option>
+                                    <option value="Saudi Arabia">
+                                      Saudi Arabia
+                                    </option>
+                                    <option value="Senegal">Senegal</option>
+                                    <option value="Serbia">Serbia</option>
+                                    <option value="Seychelles">
+                                      Seychelles
+                                    </option>
+                                    <option value="Sierra Leone">
+                                      Sierra Leone
+                                    </option>
+                                    <option value="Singapore">Singapore</option>
+                                    <option value="Slovakia">Slovakia</option>
+                                    <option value="Slovenia">Slovenia</option>
+                                    <option value="Solomon Islands">
+                                      Solomon Islands
+                                    </option>
+                                    <option value="Somalia">Somalia</option>
+                                    <option value="South Africa">
+                                      South Africa
+                                    </option>
+                                    <option
+                                      value="South Georgia and The South Sandwich Islands"
+                                    >
+                                      South Georgia and The South Sandwich
+                                      Islands
+                                    </option>
+                                    <option value="Spain">Spain</option>
+                                    <option value="Sri Lanka">Sri Lanka</option>
+                                    <option value="Sudan">Sudan</option>
+                                    <option value="Suriname">Suriname</option>
+                                    <option value="Svalbard and Jan Mayen">
+                                      Svalbard and Jan Mayen
+                                    </option>
+                                    <option value="Swaziland">Swaziland</option>
+                                    <option value="Sweden">Sweden</option>
+                                    <option value="Switzerland">
+                                      Switzerland
+                                    </option>
+                                    <option value="Syrian Arab Republic">
+                                      Syrian Arab Republic
+                                    </option>
+                                    <option value="Taiwan">Taiwan</option>
+                                    <option value="Tajikistan">
+                                      Tajikistan
+                                    </option>
+                                    <option
+                                      value="Tanzania, United Republic of"
+                                    >
+                                      Tanzania, United Republic of
+                                    </option>
+                                    <option value="Thailand">Thailand</option>
+                                    <option value="Timor-leste">
+                                      Timor-leste
+                                    </option>
+                                    <option value="Togo">Togo</option>
+                                    <option value="Tokelau">Tokelau</option>
+                                    <option value="Tonga">Tonga</option>
+                                    <option value="Trinidad and Tobago">
+                                      Trinidad and Tobago
+                                    </option>
+                                    <option value="Tunisia">Tunisia</option>
+                                    <option value="Turkey">Turkey</option>
+                                    <option value="Turkmenistan">
+                                      Turkmenistan
+                                    </option>
+                                    <option value="Turks and Caicos Islands">
+                                      Turks and Caicos Islands
+                                    </option>
+                                    <option value="Tuvalu">Tuvalu</option>
+                                    <option value="Uganda">Uganda</option>
+                                    <option value="Ukraine">Ukraine</option>
+                                    <option value="United Arab Emirates">
+                                      United Arab Emirates
+                                    </option>
+                                    <option value="United Kingdom">
+                                      United Kingdom
+                                    </option>
+                                    <option value="United States">
+                                      United States
+                                    </option>
+                                    <option
+                                      value="United States Minor Outlying Islands"
+                                    >
+                                      United States Minor Outlying Islands
+                                    </option>
+                                    <option value="Uruguay">Uruguay</option>
+                                    <option value="Uzbekistan">
+                                      Uzbekistan
+                                    </option>
+                                    <option value="Vanuatu">Vanuatu</option>
+                                    <option value="Venezuela">Venezuela</option>
+                                    <option value="Viet Nam">Viet Nam</option>
+                                    <option value="Virgin Islands, British">
+                                      Virgin Islands, British
+                                    </option>
+                                    <option value="Virgin Islands, U.S.">
+                                      Virgin Islands, U.S.
+                                    </option>
+                                    <option value="Wallis and Futuna">
+                                      Wallis and Futuna
+                                    </option>
+                                    <option value="Western Sahara">
+                                      Western Sahara
+                                    </option>
+                                    <option value="Yemen">Yemen</option>
+                                    <option value="Zambia">Zambia</option>
+                                    <option value="Zimbabwe">Zimbabwe</option>
                                   </select>
                                 </div>
                               </div>
@@ -382,6 +930,7 @@
                                     placeholder="Enter Postal code"
                                   />
                                 </div>
+                                <p id="zip-code-error"></p>
                               </div>
                             </div>
                           </div>
@@ -392,160 +941,20 @@
                 </li>
                 <li class="checkout-item">
                   <div class="avatar checkout-icon p-1">
-                    <div class="avatar-title rounded-circle bg-primary">
+                    <div class="avatar-title rounded-circle bg-secondary">
                       <i class="bx bxs-truck text-white font-size-20"></i>
                     </div>
                   </div>
                   <div class="feed-item-list">
-                    <div>
-                      <h5 class="font-size-16 mb-1">Shipping Info</h5>
-                      <p class="text-muted text-truncate mb-4">
-                        Neque porro quisquam est
-                      </p>
-                      <div class="mb-3">
-                        <div class="row">
-                          <div class="col-lg-4 col-sm-6">
-                            <div data-bs-toggle="collapse">
-                              <label class="card-radio-label mb-0">
-                                <input
-                                  type="radio"
-                                  name="address"
-                                  id="info-address1"
-                                  class="card-radio-input"
-                                  checked=""
-                                />
-                                <div class="card-radio text-truncate p-3">
-                                  <span class="fs-14 mb-4 d-block"
-                                    >Address 1</span
-                                  >
-                                  <span class="fs-14 mb-2 d-block"
-                                    >Bradley McMillian</span
-                                  >
-                                  <span
-                                    class="text-muted fw-normal text-wrap mb-1 d-block"
-                                    >109 Clarksburg Park Road Show Low, AZ
-                                    85901</span
-                                  >
-
-                                  <span class="text-muted fw-normal d-block"
-                                    >Mo. 012-345-6789</span
-                                  >
-                                </div>
-                              </label>
-                              <div class="edit-btn bg-light rounded">
-                                <a
-                                  href="#"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title=""
-                                  data-bs-original-title="Edit"
-                                >
-                                  <i class="bx bx-pencil font-size-16"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="col-lg-4 col-sm-6">
-                            <div>
-                              <label class="card-radio-label mb-0">
-                                <input
-                                  type="radio"
-                                  name="address"
-                                  id="info-address2"
-                                  class="card-radio-input"
-                                />
-                                <div class="card-radio text-truncate p-3">
-                                  <span class="fs-14 mb-4 d-block"
-                                    >Address 2</span
-                                  >
-                                  <span class="fs-14 mb-2 d-block"
-                                    >Bradley McMillian</span
-                                  >
-                                  <span
-                                    class="text-muted fw-normal text-wrap mb-1 d-block"
-                                    >109 Clarksburg Park Road Show Low, AZ
-                                    85901</span
-                                  >
-                                  <span class="text-muted fw-normal d-block"
-                                    >Mo. 012-345-6789</span
-                                  >
-                                </div>
-                              </label>
-                              <div class="edit-btn bg-light rounded">
-                                <a
-                                  href="#"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title=""
-                                  data-bs-original-title="Edit"
-                                >
-                                  <i class="bx bx-pencil font-size-16"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </li>
                 <li class="checkout-item">
-                  <div class="avatar checkout-icon p-1">
-                    <div class="avatar-title rounded-circle bg-primary">
-                      <i class="bx bxs-wallet-alt text-white font-size-20"></i>
-                    </div>
-                  </div>
+              
                   <div class="feed-item-list">
-                    <div>
-                      <h5 class="font-size-16 mb-1">Payment Info</h5>
-                      <p class="text-muted text-truncate mb-4">
-                        Duis arcu tortor, suscipit eget
-                      </p>
-                    </div>
+
                     <div>
                       <h5 class="font-size-14 mb-3">Payment method :</h5>
                       <div class="row">
-                        <div class="col-lg-3 col-sm-6">
-                          <div data-bs-toggle="collapse">
-                            <label class="card-radio-label">
-                              <input
-                                type="radio"
-                                name="pay-method"
-                                id="pay-methodoption1"
-                                class="card-radio-input"
-                              />
-                              <span
-                                class="card-radio py-3 text-center text-truncate"
-                              >
-                                <i
-                                  class="bx bx-credit-card d-block h2 mb-3"
-                                ></i>
-                                Credit / Debit Card
-                              </span>
-                            </label>
-                          </div>
-                        </div>
-
-                        <div class="col-lg-3 col-sm-6">
-                          <div>
-                            <label class="card-radio-label">
-                              <input
-                                type="radio"
-                                name="pay-method"
-                                id="pay-methodoption2"
-                                class="card-radio-input"
-                              />
-                              <span
-                                class="card-radio py-3 text-center text-truncate"
-                              >
-                                <i class="bx bxl-paypal d-block h2 mb-3"></i>
-                                Paypal
-                              </span>
-                            </label>
-                          </div>
-                        </div>
-
                         <div class="col-lg-3 col-sm-6">
                           <div>
                             <label class="card-radio-label">
@@ -583,7 +992,7 @@
             <!-- end col -->
             <div class="col">
               <div class="text-end mt-2 mt-sm-0">
-                <a href="#" class="btn btn-success">
+                <a id="proceed" href="#" class="btn btn-secondary">
                   <i class="mdi mdi-cart-outline me-1"></i> Procced
                 </a>
               </div>
@@ -597,7 +1006,8 @@
             <div class="card-body">
               <div class="p-3 bg-light mb-3">
                 <h5 class="font-size-16 mb-0">
-                  Order Summary <span class="float-end ms-2">#MN0124</span>
+                  Order Summary
+                  <span id="order-number" class="float-end ms-2"></span>
                 </h5>
               </div>
               <div class="table-responsive">
@@ -611,90 +1021,9 @@
                       <th class="border-top-0" scope="col">Price</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">
-                        <img
-                          src="https://www.bootdey.com/image/280x280/FF00FF/000000"
-                          alt="product-img"
-                          title="product-img"
-                          class="avatar-lg rounded"
-                        />
-                      </th>
-                      <td>
-                        <h5 class="font-size-16 text-truncate">
-                          <a href="#" class="text-dark"
-                            >Waterproof Mobile Phone</a
-                          >
-                        </h5>
-                        <p class="text-muted mb-0">
-                          <i class="bx bxs-star text-warning"></i>
-                          <i class="bx bxs-star text-warning"></i>
-                          <i class="bx bxs-star text-warning"></i>
-                          <i class="bx bxs-star text-warning"></i>
-                          <i class="bx bxs-star-half text-warning"></i>
-                        </p>
-                        <p class="text-muted mb-0 mt-1">$ 260 x 2</p>
-                      </td>
-                      <td>$ 520</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <img
-                          src="https://www.bootdey.com/image/280x280/FF00FF/000000"
-                          alt="product-img"
-                          title="product-img"
-                          class="avatar-lg rounded"
-                        />
-                      </th>
-                      <td>
-                        <h5 class="font-size-16 text-truncate">
-                          <a href="#" class="text-dark"
-                            >Smartphone Dual Camera</a
-                          >
-                        </h5>
-                        <p class="text-muted mb-0">
-                          <i class="bx bxs-star text-warning"></i>
-                          <i class="bx bxs-star text-warning"></i>
-                          <i class="bx bxs-star text-warning"></i>
-                          <i class="bx bxs-star text-warning"></i>
-                        </p>
-                        <p class="text-muted mb-0 mt-1">$ 260 x 1</p>
-                      </td>
-                      <td>$ 260</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        <h5 class="font-size-14 m-0">Sub Total :</h5>
-                      </td>
-                      <td>$ 780</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        <h5 class="font-size-14 m-0">Discount :</h5>
-                      </td>
-                      <td>- $ 78</td>
-                    </tr>
-
-                    <tr>
-                      <td colspan="2">
-                        <h5 class="font-size-14 m-0">Shipping Charge :</h5>
-                      </td>
-                      <td>$ 25</td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        <h5 class="font-size-14 m-0">Estimated Tax :</h5>
-                      </td>
-                      <td>$ 18.20</td>
-                    </tr>
-
-                    <tr class="bg-light">
-                      <td colspan="2">
-                        <h5 class="font-size-14 m-0">Total:</h5>
-                      </td>
-                      <td>$ 745.2</td>
-                    </tr>
+                  <tbody id="order-summary">
+     
+ -->
                   </tbody>
                 </table>
               </div>
@@ -704,8 +1033,7 @@
       </div>
       <!-- end row -->
     </div>
-    <!-- <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript"></script> -->
+
+    <script src="./checkoutPage.js"></script>
   </body>
 </html>
