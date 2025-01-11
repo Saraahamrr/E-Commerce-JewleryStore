@@ -10,7 +10,7 @@ document.getElementById("proceed").addEventListener("click", function () {
     const nameRegex = /^[a-zA-Z][a-zA-Z0-9._ -]{2,15}$/;
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const phoneRegex = /^(?:\+20|0020|0)?(10|11|12|15)\d{8}$/;
-    const zipCodeRegex = /^[0-9]{5}(-[0-9]{4})?$/;;
+    const zipCodeRegex = /^[0-9]{5}(-[0-9]{4})?$/;
 
 
 
@@ -99,4 +99,3 @@ function orderRandomNumber() {
     return orderNumber.textContent;
 
 };
-console.log(orderRandomNumber());
