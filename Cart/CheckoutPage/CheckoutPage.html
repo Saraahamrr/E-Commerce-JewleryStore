@@ -2,20 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
-    <!--  All snippets are MIT license http://bootdey.com/license -->
     <title>
-      Ecommerce checkout with customer info and order summary - Bootdey.com
+Checkout Page
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./Checkout.css" />
     <style type="text/css">
+
       body {
-        margin-top: 20px;
-        background-color: #f1f3f7;
+        margin: 0px;
+        padding: 8px;
+        background: #f5e5cc;
       }
 
       .card {
@@ -57,7 +58,7 @@
       }
 
       .activity-checkout .checkout-item:first-child {
-        border-color: #3b76e1;
+        border-color: #e1933b;
       }
 
       .activity-checkout .checkout-item:first-child:after {
@@ -182,7 +183,7 @@
       }
 
       .card-radio-input:checked + .card-radio {
-        border-color: #3b76e1 !important;
+        border-color: #e1933b !important;
       }
 
       .font-size-16 {
@@ -244,7 +245,9 @@
         padding: 1px 22px;
         font-size: 13px;
         font-weight: 500;
+
       }
+
     </style>
   </head>
   <body>
@@ -258,7 +261,90 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <!-- Navbar adding-->
+    <nav class="navbar navbar-expand-lg ">
 
+      <div class="container-fluid d-flex justify-content-between align-items-center ">
+          <!-- lists -->
+          <div class="left-content">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#about">About Us</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          jewelry
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Necklaces</a></li>
+                          <li><a class="dropdown-item" href="#">Rings</a></li>
+                          <li><a class="dropdown-item" href="#">Pendants</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+          <!-- list in mobile -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+              aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- body of responsive -->
+          <div class="offcanvas offcanvas-end mobile-lists" tabindex="-1" id="offcanvasNavbar"
+              aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">About Us</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                              aria-expanded="false">Categories</a>
+                          <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Necklaces</a></li>
+                              <li><a class="dropdown-item" href="#">Rings</a></li>
+                              <li><a class="dropdown-item" href="#">Pendants</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">Disabled</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          <!-- image logo -->
+          <div class="center-image d-flex justify-content-center logo-container">
+              <img src="images/logo.png" alt="Logo" class="img-fluid logo">
+          </div>
+
+          <!-- search -->
+          <div class="right-content search-container">
+              <form class="d-flex search-container justify-content-between align-items-center" role="search">
+                  <input class="me-2 forminput" type="search" placeholder="Search" aria-label="Search">
+                  <div class="d-flex justify-content-evenly align-items-center icons-container">
+                      <i class="fa-solid fa-magnifying-glass icon"></i>
+                      <i class="fa-solid fa-user icon"></i>
+                      <div class="icon">
+                        <i class="fa-solid fa-cart-plus icon"></i>
+                        <span class="badge bg-danger rounded-pill"></span>
+                      </div>
+                  </div>
+
+              </form>
+          </div>
+      </div>
+      </div>
+  </nav>
+    <!-- Navbar adding-->
     <div class="container">
       <div class="row">
         <div class="col-xl-8">
@@ -267,7 +353,7 @@
               <ol class="activity-checkout mb-0 px-4 mt-3">
                 <li class="checkout-item">
                   <div class="avatar checkout-icon p-1">
-                    <div class="avatar-title rounded-circle bg-primary">
+                    <div class="avatar-title rounded-circle bg-secondary">
                       <i class="bx bxs-receipt text-white font-size-20"></i>
                     </div>
                   </div>
@@ -855,7 +941,7 @@
                 </li>
                 <li class="checkout-item">
                   <div class="avatar checkout-icon p-1">
-                    <div class="avatar-title rounded-circle bg-primary">
+                    <div class="avatar-title rounded-circle bg-secondary">
                       <i class="bx bxs-truck text-white font-size-20"></i>
                     </div>
                   </div>
@@ -1046,7 +1132,7 @@
             <!-- end col -->
             <div class="col">
               <div class="text-end mt-2 mt-sm-0">
-                <a id="proceed" href="#" class="btn btn-success">
+                <a id="proceed" href="#" class="btn btn-secondary">
                   <i class="mdi mdi-cart-outline me-1"></i> Procced
                 </a>
               </div>
@@ -1075,8 +1161,8 @@
                       <th class="border-top-0" scope="col">Price</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
+                  <tbody id="order-summary">
+                    <!-- <tr>
                       <th scope="row">
                         <img
                           src="https://www.bootdey.com/image/280x280/FF00FF/000000"
@@ -1101,33 +1187,9 @@
                         <p class="text-muted mb-0 mt-1">$ 260 x 2</p>
                       </td>
                       <td>$ 520</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <img
-                          src="https://www.bootdey.com/image/280x280/FF00FF/000000"
-                          alt="product-img"
-                          title="product-img"
-                          class="avatar-lg rounded"
-                        />
-                      </th>
-                      <td>
-                        <h5 class="font-size-16 text-truncate">
-                          <a href="#" class="text-dark"
-                            >Smartphone Dual Camera</a
-                          >
-                        </h5>
-                        <p class="text-muted mb-0">
-                          <i class="bx bxs-star text-warning"></i>
-                          <i class="bx bxs-star text-warning"></i>
-                          <i class="bx bxs-star text-warning"></i>
-                          <i class="bx bxs-star text-warning"></i>
-                        </p>
-                        <p class="text-muted mb-0 mt-1">$ 260 x 1</p>
-                      </td>
-                      <td>$ 260</td>
-                    </tr>
-                    <tr>
+                    </tr> -->
+
+                    <!-- <tr>
                       <td colspan="2">
                         <h5 class="font-size-14 m-0">Sub Total :</h5>
                       </td>
@@ -1139,7 +1201,7 @@
                       </td>
                       <td>- $ 78</td>
                     </tr>
-
+                    
                     <tr>
                       <td colspan="2">
                         <h5 class="font-size-14 m-0">Shipping Charge :</h5>
@@ -1158,7 +1220,7 @@
                         <h5 class="font-size-14 m-0">Total:</h5>
                       </td>
                       <td>$ 745.2</td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
               </div>
@@ -1168,9 +1230,6 @@
       </div>
       <!-- end row -->
     </div>
-    <!-- <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript"></script> -->
 
     <script src="./checkoutPage.js"></script>
   </body>
