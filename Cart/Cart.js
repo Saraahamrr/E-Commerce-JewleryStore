@@ -41,7 +41,7 @@ const addDataToHTML = () => {
                 </button>
             `;
             listProductsHtml.appendChild(newProduct);
-            console.log(newProduct);
+            //console.log(newProduct);
         });
     }
 };
@@ -76,7 +76,7 @@ listProductsHtml.addEventListener('click', function(e) {
         /*if the place we are clicking on has the class addcart do this */
         let product_id = positionClick.parentElement.dataset.id;
         addToCart(product_id);
-        console.log(product_id);
+        //console.log(product_id);
     }
 })
 
@@ -93,7 +93,10 @@ let positioninCartList = cart.findIndex((value) => value.product_id == product_i
     if (cart.length === 0){
         cart = [{
             product_id: product_id,
-            quantity: 1
+            title : listProduct[product_id].title || "",
+            quantity: 1,
+            image : listProduct[product_id].img || "",
+            price : listProduct[product_id].price || 0,
         }]
     }
     //console.log(cart);
@@ -101,7 +104,11 @@ let positioninCartList = cart.findIndex((value) => value.product_id == product_i
     else if (positioninCartList < 0){
         cart.push({
             product_id: product_id, 
-            quantity: 1
+            title : listProduct[product_id].title || "",
+            quantity: 1,
+            image : listProduct[product_id].img || "",
+            price : listProduct[product_id].price || 0,
+
         })
 
     }
@@ -168,7 +175,18 @@ const showCart = () => {
     }
 
     iconCartspan.textContent = totalQuantity;
+    addCartToMemory();
+
+
+    const addSpanToMemory = () => {
+        localStorage.setItem('iconCartspan',  iconCartspan.textContent);
+    }
+    addSpanToMemory();
+    //console.log(iconCartspan.textContent);
+    console.log(cart)
 };
+
+
 
 /* removing items from the cart */
 cartListHTML.addEventListener('click', function (e) {

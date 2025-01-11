@@ -70,9 +70,9 @@ document.getElementById("proceed").addEventListener("click", function () {
 
     // zipCode validation
     if (zipCode.length === 0) {
-    isValid = true;
+        isValid = true;
     }
-    else if (!zipCode.match(zipCodeRegex)) {
+    if (!zipCode.match(zipCodeRegex)) {
         document.getElementById("zip-code").style.border = "2px solid red";
         document.getElementById("zip-code-error").textContent = ""
         isValid = false;
@@ -84,7 +84,11 @@ document.getElementById("proceed").addEventListener("click", function () {
     if (!isValid) {
         return;
     }
-}); 
+    else {
+        // If all fields are valid, proceed to the next page
+        return;
+    }
+});
 
 // Random order number
 function orderRandomNumber() {
@@ -99,3 +103,107 @@ function orderRandomNumber() {
     return orderNumber.textContent;
 
 };
+orderRandomNumber();
+
+//getting the number of items in the cart to the icon
+let body = document.querySelector('body');
+let iconCartspan = document.querySelector('.icon span');
+const spanNumber = localStorage.getItem('iconCartspan');
+
+iconCartspan.textContent = spanNumber;
+
+// getting cart items to the checkout page
+const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+// Adding the items to the order summary table
+const orderSummary = document.getElementById('order-summary')
+for (let i = 0; i < cartItems.length; i++) {
+    let newProduct = document.createElement('tr');
+    newProduct.classList.add('Item');
+    let infoItem = cartItems[i];
+    // Getting total price of each item
+    var itemTotalPrice = 0;
+    itemTotalPrice += infoItem.price * infoItem.quantity;
+    newProduct.innerHTML = `
+                    <th scope="row">
+                        <img
+                          src="${infoItem.image}"
+                          alt="product-img"
+                          title="product-img"
+                          class="avatar-lg rounded"
+                        />
+                    </th>
+                    <td>
+                        <h5 class="font-size-16 text-truncate">
+                          <span href="#" class="text-dark"
+                            >${infoItem.title}</span>
+                        </h5>
+                        <p class="text-muted mb-0">
+                          <i class="bx bxs-star text-warning"></i>
+                          <i class="bx bxs-star text-warning"></i>
+                          <i class="bx bxs-star text-warning"></i>
+                          <i class="bx bxs-star text-warning"></i>
+                          <i class="bx bxs-star-half text-warning"></i>
+                        </p>
+                        <p class="text-muted mb-0 mt-1">${infoItem.price} EGP x ${infoItem.quantity}</p>
+                    </td>
+                    <td>${itemTotalPrice} EGP </td>
+                    `;
+    orderSummary.insertBefore((newProduct),orderSummary.firstChild)
+}
+
+//calculating the sub total
+let sub_totalValue = 0;
+for (let i = 0; i < cartItems.length; i++) {
+    sub_totalValue += cartItems[i].price * cartItems[i].quantity;
+}
+//calculating the discount
+let discountValue = 0.1 * sub_totalValue;
+let roundDiscountValue = Math.round(discountValue)
+//calculating the shipping charge
+let shippingValue = 60;
+//calculating the total
+let totalValue = sub_totalValue - discountValue + shippingValue;
+
+
+// Adding the billing values to the checkout page
+let sub_total = document.createElement('tr');
+sub_total.innerHTML = `
+                      <td colspan="2">
+                        <h5 class="font-size-14 m-0">Sub Total :</h5>
+                      </td>
+                      <td>${sub_totalValue} EGP </td>
+                      `;
+let Discount = document.createElement('tr');
+Discount.innerHTML = `
+                    <tr>
+                      <td colspan="2">
+                        <h5 class="font-size-14 m-0">Discount :</h5>
+                      </td>
+                      <td> -${roundDiscountValue} EGP </td>
+                    </tr>
+                    `;
+                    
+let shipping = document.createElement('tr');
+shipping.innerHTML = `
+                      <td colspan="2">
+                        <h5 class="font-size-14 m-0">Shipping Charge :</h5>
+                      </td>
+                      <td> ${shippingValue} EGP</td>
+                      `;
+
+
+let total = document.createElement('tr');
+total.classList.add('bg-light');
+total.innerHTML = `
+                      <td colspan="2">
+                        <h5 class="font-size-14 m-0">Total:</h5>
+                      </td>
+                      <td>${totalValue} EGP </td>
+    `;
+
+orderSummary.appendChild(sub_total);
+orderSummary.appendChild(Discount); 
+orderSummary.appendChild(shipping);
+orderSummary.appendChild(total);
+
