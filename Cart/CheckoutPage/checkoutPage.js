@@ -31,15 +31,15 @@ document.getElementById("proceed").addEventListener("click", function () {
         error.style.color = "red";
     });
 
-    // userName validation
+    // username validation
     if (name.length === 0) {
         document.getElementById("billing-name").style.border = "2px solid red";
-        document.getElementById("billing-name-error").textContent = "Name is required.Please enter a valid name.";
+        document.getElementById("billing-name-error").textContent = "name is required.Please enter a valid name.";
         isValid = false;
     }
     else if (!name.match(nameRegex)) {
         document.getElementById("billing-name").style.border = "2px solid red";
-        document.getElementById("billing-name-error").textContent = "Name is invalid.Please enter a valid name.";
+        document.getElementById("billing-name-error").textContent = "name is invalid.Please enter a valid name.";
     }
 
 
@@ -162,6 +162,9 @@ let discountValue = 0.1 * sub_totalValue;
 let roundDiscountValue = Math.round(discountValue)
 //calculating the shipping charge
 let shippingValue = 60;
+if (sub_totalValue == 0) {
+    shippingValue = 0;
+}
 //calculating the total
 let totalValue = sub_totalValue - discountValue + shippingValue;
 
@@ -207,3 +210,30 @@ orderSummary.appendChild(Discount);
 orderSummary.appendChild(shipping);
 orderSummary.appendChild(total);
 
+// Send email using EmailJS
+
+emailjs.init({
+    publicKey: "ttxicO9Oj7dYYv_Ku",
+  });
+
+        function sendOrderConfirmation() {
+            const name = document.getElementById("billing-name").value;
+            const email = document.getElementById("billing-email-address").value;
+
+            if (!name || !email) {
+                alert("Please fill in both your name and email!");
+                return;
+            }
+
+            const params = {name, email};
+
+            emailjs.send("service_9ja2k1h", "template_g1h3rrw", params)
+                .then(function (response) {
+                    alert("Order confirmation sent to your email!");
+                }, function (error) {
+                    alert("Failed to send confirmation. Please try again.");
+                });
+                console.log(params); // Log parameters before sending
+                window.location.href = 'ThankYouPage.html'; // Redirect to order success page
+
+        }
