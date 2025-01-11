@@ -1,29 +1,19 @@
-/* 
-showing the cart when clicking on the cart icon
-*/
+//showing the cart when clicking on the cart icon
 let body = document.querySelector('body');
 let iconCart = document.querySelector('.icon');
 iconCart.addEventListener('click', function() {
     body.classList.toggle('ShowCart');
 });
 
-
-/*
-closing the cart when clicking on the close button
-*/
+//closing the cart when clicking on the close button
 let closeCart = document.querySelector('.closeCart');
 closeCart.addEventListener('click',function(){
     body.classList.toggle('ShowCart');
 })
 
-
-/* 
-fetching the products from the json file
-*/
-
+//creating innerhtml for the products 
 let listProductsHtml = document.querySelector('.listProducts');
 let listProduct = [];
-
 
 const addDataToHTML = () => {
     listProduct.innerHTML = '';
@@ -31,7 +21,8 @@ const addDataToHTML = () => {
         listProduct.forEach(product => {
             let newProduct = document.createElement('div');
             newProduct.classList.add('item');
-            newProduct.dataset.id = product.id; /*adding id to each item using its id in the json file*/
+            /*adding id to each item using its id in the json file*/
+            newProduct.dataset.id = product.id; 
             newProduct.innerHTML = `
                 <img src="${product.img}" alt="">
                 <h2>${product.title}</h2>
@@ -41,11 +32,10 @@ const addDataToHTML = () => {
                 </button>
             `;
             listProductsHtml.appendChild(newProduct);
-            //console.log(newProduct);
         });
     }
 };
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//fetching the products from the json file
 const initApp = () => {
     fetch(`jewellery.json`)
     .then (response => response.json())
@@ -53,7 +43,8 @@ const initApp = () => {
         listProduct = data;
         addDataToHTML();
 
-        ///// adding to product list by heba//////
+        //adding to product list by heba//
+        //checking if there is a cart in the local storage
         if (localStorage.getItem('cart')) {
             cart = JSON.parse(localStorage.getItem('cart'));
             showCart(cart);
@@ -63,29 +54,22 @@ const initApp = () => {
 
 initApp();
 
-/* 
-adding the products to the cart
-*/
-
+// adding the products to the cart
 listProductsHtml.addEventListener('click', function(e) {
-    let positionClick = e.target; /*where we are clicking */
+    let positionClick = e.target; 
     if (positionClick.classList.contains('addCart')) {
-        /*if the place we are clicking on has the class addcart do this */
         let product_id = positionClick.parentElement.dataset.id;
         addToCart(product_id);
-        //console.log(product_id);
     }
 })
 
-/* let things to be updated and needs action */
+//creating cart list Array
 let cartListHTML = document.querySelector('.cartList');
 let cart = []
-
-/* product_id , quantity */
+// getting the properties of the product and adding it to the cart
 const addToCart =(product_id)=>{
 
 let positioninCartList = cart.findIndex((value) => value.product_id == product_id);
-
 
     if (cart.length === 0){
         cart = [{
@@ -96,7 +80,6 @@ let positioninCartList = cart.findIndex((value) => value.product_id == product_i
             price : listProduct[product_id].price || 0,
         }]
     }
-    //console.log(cart);
     //find index return -1 if not found
     else if (positioninCartList < 0){
         cart.push({
@@ -105,25 +88,24 @@ let positioninCartList = cart.findIndex((value) => value.product_id == product_i
             quantity: 1,
             image : listProduct[product_id].img || "",
             price : listProduct[product_id].price || 0,
-
-        })
-
+        });
     }
     else{
         cart[positioninCartList].quantity +=1;
     }
-    // showing the cart and it items 
+
+    //showing the cart and it items 
     showCart(cart);
     addCartToMemory();
 }
-/* saving data for loign again */
-/// declaring the function to add the cart to the memory
+
+//saving data for loign again
 const addCartToMemory = () => {
 localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-/* show items + information into cart */
-/* id , image , name ,price , quantity */
+//show items in the cart 
+//id, image, title, quantity, price. 
 let iconCartspan = document.querySelector('.icon span');
 const showCart = () => {
 let totalQuantity = 0;
@@ -132,7 +114,8 @@ let totalPrice = 0;
     if (cart.length > 0) {
         cart.forEach(item => {
             totalQuantity += item.quantity;
-            /* find index of the product in the list of products 
+
+            /*find index of the product in the list of products 
             if using find I will not be able to acces index 
             to update or remove the item in the cart*/
             
@@ -160,7 +143,7 @@ let totalPrice = 0;
             cartListHTML.appendChild(newProduct);
             console.log(newProduct);
         })
-
+        //showing the total price of the cart
         let newtotalPrice = document.createElement('div');
         newtotalPrice.classList.add('total');
         newtotalPrice.innerHTML = `
@@ -173,22 +156,19 @@ let totalPrice = 0;
         cartListHTML.appendChild(newtotalPrice);
     
     }
-
+    //showing the total quantity of the cart
     iconCartspan.textContent = totalQuantity;
-    addCartToMemory();
 
-
+    //saving the total quantity in the local storage
     const addSpanToMemory = () => {
         localStorage.setItem('iconCartspan',  iconCartspan.textContent);
     }
+    
+    addCartToMemory();
     addSpanToMemory();
-    //console.log(iconCartspan.textContent);
-    console.log(cart)
 };
 
-
-
-/* removing items from the cart */
+//Handling Cart Buttons
 cartListHTML.addEventListener('click', function (e) {
     let positionClick = e.target;
     let product_id;
@@ -221,6 +201,7 @@ cartListHTML.addEventListener('click', function (e) {
         addCartToMemory();
     }
 });
+//remove from cart function
 const removeFromCart = (product_id) => {
     let positioninCartList = cart.findIndex((value) => value.product_id == product_id);
     if (positioninCartList >= 0) {
