@@ -70,6 +70,21 @@ fetch('../jewellery.json')
     console.error('Error fetching the JSON file:', error);
 });
 
+// const addToCartHandler = (productId) => {
+//     const sortedCart = JSON.parse(localStorage.getItem('cart')) || [];
+//     const productIndex = sortedCart.findIndex(item => item.product_id === productId);
+
+//     if(productIndex > -1){
+//         sortedCart[productIndex].quantity += 1;
+//     } else{
+//         sortedCart.push({product_id: productId, quantity: 1});
+//     }
+//     console.log(sortedCart);
+
+//     localStorage.setItem('cart', JSON.stringify(sortedCart));
+//     alert('Product added to cart');
+// };
+
 const addToCartHandler = (productId) => {
     const sortedCart = JSON.parse(localStorage.getItem('cart')) || [];
     const productIndex = sortedCart.findIndex(item => item.product_id === productId);
@@ -81,7 +96,19 @@ const addToCartHandler = (productId) => {
     }
 
     localStorage.setItem('cart', JSON.stringify(sortedCart));
+    updateCartCount();  // Update the cart count after adding an item
     alert('Product added to cart');
+}
+
+const updateCartCount = () => {
+    // Get the cart count from local storage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0); // Calculate the total quantity of items in the cart
+
+    const cartCountElement = document.querySelector('.icon span'); // Get the cart count element
+    if (cartCountElement) {
+        cartCountElement.textContent = cartCount; // Update the span with the cart count
+    }
 }
 
 //handle jewelry tab 
