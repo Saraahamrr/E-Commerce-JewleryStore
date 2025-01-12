@@ -1,5 +1,5 @@
 const jewwllaries = new XMLHttpRequest();
-jewwllaries.open("GET", "jewellery.json");
+jewwllaries.open("GET", "../jewelry/categories/jewellery.json");
 jewwllaries.send();
 jewwllaries.onreadystatechange = function () {
     if (jewwllaries.readyState === 4) {
@@ -53,3 +53,7 @@ function displayFilteredProducts(filteredProducts) {
     });
 }
 
+//handle jewelry tab 
+function jewelry(){
+    window.location.href = '../jewelry/jewelry.html';
+}
