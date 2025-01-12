@@ -211,29 +211,29 @@ orderSummary.appendChild(shipping);
 orderSummary.appendChild(total);
 
 // Send email using EmailJS
+emailjs.init("TRJvhYFLLPJQVimCM");
 
-emailjs.init({
-    publicKey: "ttxicO9Oj7dYYv_Ku",
-  });
+function sendOrderConfirmation() {
+    const name = document.getElementById("billing-name").value;
+    const email = document.getElementById("billing-email-address").value;
 
-        function sendOrderConfirmation() {
-            const name = document.getElementById("billing-name").value;
-            const email = document.getElementById("billing-email-address").value;
+    if (!name || !email) {
+        alert("Please fill in both your name and email!");
+        return;
+    }
 
-            if (!name || !email) {
-                alert("Please fill in both your name and email!");
-                return;
-            }
+    const params = {
+        name: name,
+        email: email
+    };
 
-            const params = {name, email};
-
-            emailjs.send("service_9ja2k1h", "template_g1h3rrw", params)
-                .then(function (response) {
-                    alert("Order confirmation sent to your email!");
-                }, function (error) {
-                    alert("Failed to send confirmation. Please try again.");
-                });
-                console.log(params); // Log parameters before sending
-                window.location.href = 'ThankYouPage.html'; // Redirect to order success page
-
-        }
+    emailjs.send("service_q4n1nwu", "template_g1h3rrw", params)
+        .then(function(response) {
+            alert("Order confirmation sent to your email!");
+            window.location.href = 'ThankYouPage.html'; 
+        })
+        .catch(function(error) {
+            alert("Failed to send confirmation. Please try again.");
+            console.error("Error:", error);
+        });
+}
