@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OTP Verification</title>
-    <link rel="stylesheet" href="otp.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <link rel="stylesheet" href="otp.css" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
     <script type="text/javascript">
+
         (function () {
             emailjs.init("ksn6vDhQl5E3AlTWX");
         })();
     </script>
-</head>
 
-<body>
+    <script src="otp.js"></script>
+  </head>
+
+
+  <body>
     <div class="form">
+
         <h1>OTP Verification</h1>
 
         <!-- Email field shown as read-only -->
@@ -49,35 +56,42 @@
             return Math.floor(1000 + Math.random() * 9000); // Generate 4-digit OTP
         }
 
-        //  send OTP
-        function sendOtp() {
-            const email = document.getElementById("email").value;
+       
 
-            if (!email) {
-                alert("Email is missing!");
-                return;
-            }
+      // Function to send OTP
+      function sendOtp() {
+        const email = document.getElementById("email").value;
 
-            // Generate a random OTP
-            const generatedOtp = Math.floor(1000 + Math.random() * 9000);
+
+        if (!email) {
+          alert("Email is missing!");
+          return;
+        }
+
+        // Generate a random OTP
+        const generatedOtp = Math.floor(1000 + Math.random() * 9000);
+
 
             // Save OTP and the timestamp to localStorage
             localStorage.setItem("generatedOtp", generatedOtp);
             localStorage.setItem("otpTimestamp", Date.now()); // Save current timestamp
 
-            // Send OTP via EmailJS
-            const params = { email, otp: generatedOtp };
+        // Send OTP via EmailJS
+        const params = { email, otp: generatedOtp };
 
-            emailjs.send("service_ln4x6ao", "template_5wuukud", params)
-                .then(function (response) {
-                    alert("OTP sent to your email!");
-                    // Show the OTP input field after sending
-                    document.querySelector('.otpverify').style.display = 'flex';
-                }, function (error) {
-                    console.error("Error sending OTP:", error);
-                    alert("Failed to send OTP. Please try again.");
-                });
-        }
+        emailjs.send("service_ln4x6ao", "template_5wuukud", params).then(
+          function (response) {
+            alert("OTP sent to your email!");
+            // Show the OTP input field after sending
+            document.querySelector(".otpverify").style.display = "flex";
+          },
+          function (error) {
+            console.error("Error sending OTP:", error);
+            alert("Failed to send OTP. Please try again.");
+          }
+        );
+      }
+
 
 
         // Function to verify OTP
@@ -138,3 +152,4 @@
 </body>
 
 </html>
+

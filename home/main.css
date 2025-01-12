@@ -1473,4 +1473,12 @@ ol li {
 .product:hover {
     transform: translateY(-10px); /* Lift effect on hover */
     transition: transform 0.3s ease;
+
+}
+
+
+.handleLinks{
+    cursor: pointer;
+    text-decoration: none;
+
 }
