@@ -84,6 +84,21 @@ const addToCartHandler = (productId) => {
     alert('Product added to cart');
 }
 
+
+
+//showing the cart when clicking on the cart icon
+let body = document.querySelector('body');
+let iconCart = document.querySelector('.icon');
+iconCart.addEventListener('click', function() {
+    body.classList.toggle('ShowCart');
+});
+
+//closing the cart when clicking on the close button
+let closeCart = document.querySelector('.closeCart');
+closeCart.addEventListener('click',function(){
+    body.classList.toggle('ShowCart');
+})
+
 //handle jewelry tab 
 function jewelry(){
     window.location.href = '../../jewelry.html';
