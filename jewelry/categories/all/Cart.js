@@ -1,44 +1,24 @@
 //showing the cart when clicking on the cart icon
-let body = document.querySelector('body');
-let iconCart = document.querySelector('.icon');
+// let body = document.querySelector('body');
+// let iconCart = document.querySelector('.icon');
+let iconCart = document.getElementById('cart-icon');
 iconCart.addEventListener('click', function() {
-    body.classList.toggle('ShowCart');
+    document.body.classList.toggle('ShowCart');
 });
 
 //closing the cart when clicking on the close button
 let closeCart = document.querySelector('.closeCart');
 closeCart.addEventListener('click',function(){
-    body.classList.toggle('ShowCart');
+    document.body.classList.toggle('ShowCart');
 })
 
 //creating list for the products 
 let listProductsHtml = document.querySelector('.listProducts');
 let listProduct = [];
 
-// const addDataToHTML = () => {
-//     listProduct.innerHTML = '';
-//     if (listProduct.length > 0) {
-//         listProduct.forEach(product => {
-//             let newProduct = document.createElement('div');
-//             newProduct.classList.add('item');
-//             /*adding id to each item using its id in the json file*/
-//             newProduct.dataset.id = product.id; 
-//             newProduct.innerHTML = `
-//                 <img src="../jewelry/categories/${product.img}" alt="">
-//                 <h2>${product.title}</h2>
-//                 <div class="price">${product.price} EGP </div>
-//                 <button class="addCart">
-//                 Add To Cart
-//                 </button>
-//             `;
-//             listProductsHtml.appendChild(newProduct);
-//         });
-//     }
-// };
-
 //fetching the products from the json file
 const initApp = () => {
-    fetch('../jewelry/categories/jewellery.json')
+    fetch('../jewellery.json')
         .then(response => response.json())
         .then(data => {
             listProduct = data;
