@@ -1,8 +1,14 @@
 [
   {
+    "username": "Nour",
+    "password": "$2b$10$4CNs/MCdCSIbUuVrfZp.ROTkIB2icDdcUDTW.tDI0AnO7TiK9sGz.",
+    "email": "rmdht857@gmail.com",
+    "phone": "01127281299"
+  },
+  {
     "username": "Rahma",
-    "password": "MSNNrA@1222",
+    "password": "$2b$10$NmptH3XhwaKfqvb.LYnZouyWuUjoX3AQ0Bc8UHLBMo/I3OkG5.B8S",
     "email": "rahmamedhat503@gmail.com",
-    "phone": "011258963"
+    "phone": "02366"
   }
 ]
