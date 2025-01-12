@@ -44,7 +44,7 @@ h1 {
 
 /* OTP input field container */
 .otpverify {
-    display: block;
+    display: none;
     justify-content: space-between;
     gap: 15px;
     margin-bottom: 20px;

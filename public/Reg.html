@@ -13,44 +13,278 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" rel="stylesheet">
     <script src="register.js"></script>
     <style>
+     
         body {
-            background-color: #f2eee7;
-            background-size: cover;
-            background-position: center;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            --pcolor: #c25e12;
+            padding: 0;
+            margin: 0;
+            background-color: #f5e5cc;
+
+
+
         }
 
         .card {
-            background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
-            backdrop-filter: blur(20px); /* Adds a frosted glass effect */
+            margin-top: auto;
+            margin-bottom: auto;
             border-radius: 30px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            align-self: auto;
         }
 
-        .fas {
-            color: #fbc404;
-            font-size: 24px;
-        }
 
         .fa-gem {
-            color: #fbc404;
+            color: var(--pcolor);
             margin-left: 10px;
             font-size: 40px;
         }
 
-        /* Eye icon style */
-        .eye-icon {
-            cursor: pointer;
-            color: #888;
+        .fas {
+            color: var(--pcolor);
+            font-size: 24px;
+        }
+
+        .input-group-text {
+            background-color: transparent;
+            border: none;
+            color: var(--pcolor);
+        }
+
+        .input-group {
+            width: 100%;
+        }
+
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+
+
+
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #f5e5cc;
+            height: 130px;
+            width: 100%;
+
+          
+        }
+
+
+        .left-content,
+        .right-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .center-image {
+            margin: 0 auto;
+        }
+
+
+        .container-fluid {
+            width: 90% !important;
+        }
+
+        .desktop-lists {
+            display: flex;
+        }
+
+        .mobile-lists {
+            display: none;
+        }
+
+        .nav-links {
+            margin-left: 30px;
+
+        }
+
+        .nav-item {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .nav-item a {
+            color: #282328;
+            font-size: 1.1rem;
+            font-family: Garamond, serif;
+
+        }
+
+        .nav-item a:hover {
+            color: #d1b28f;
+        }
+
+        .nav-item a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #d1b28f, #d1b28f);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.5s ease-out;
+        }
+
+        .nav-item a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .nav-item a:focus {
+            background-color: #d1b28f;
+            color: white;
+        }
+
+        .nav-item .dropdown-menu a {
+            color: #282328;
+            font-size: 1.1rem;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .search-container input {
+            font-size: 1rem;
+        }
+
+        .forminput {
+            width: 250px;
+            height: 35px;
+            border: 1px solid #d1b28f;
+            border-radius: 8px;
+            padding: 5px 10px;
+            font-size: 14px;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .forminput:hover,
+        .forminput:focus {
+            border: 2px solid #d1b28f;
+            box-shadow: 0 0 10px #d1b28f;
+            outline: none;
+        }
+
+        #nav-icons.icons-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        #nav-icons .icon {
+            color: #282623 !important;
+            font-size: 1.5rem;
+            /* margin: 10px; */
+        }
+
+        #nav-icons .icon:hover {
+            color: #d1b28f !important;
+        }
+
+        .offcanvas {
+            display: none;
         }
     </style>
 </head>
 
 <body>
+
+
+    <nav class="navbar navbar-expand-lg ">
+
+        <div class="container-fluid d-flex justify-content-between align-items-center ">
+            <!-- lists -->
+            <div class="left-content">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="/jewelry.html" >
+                            jewelry
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Necklaces</a></li>
+                            <li><a class="dropdown-item" href="#">Rings</a></li>
+                            <li><a class="dropdown-item" href="#">Pendants</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- list in mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- body of responsive -->
+            <div class="offcanvas offcanvas-end mobile-lists" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Categories</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Necklaces</a></li>
+                                <li><a class="dropdown-item" href="#">Rings</a></li>
+                                <li><a class="dropdown-item" href="#">Pendants</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Disabled</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- image logo -->
+            <div class="center-image d-flex justify-content-center logo-container">
+                <img src="images/logo.png" alt="Logo" class="img-fluid logo">
+            </div>
+
+            <!-- search -->
+            <div class="right-content search-container">
+                <form class="d-flex search-container justify-content-between align-items-center" role="search">
+                    <input class="me-2 forminput" type="search" placeholder="Search" aria-label="Search">
+
+                    <div id="nav-icons" class="d-flex justify-content-evenly align-items-center icons-container">
+
+                        <i class="fa-solid fa-magnifying-glass icon"></i>
+                        <a href="/login.html"><i class="fa-solid fa-user icon"></i></a>
+
+                        <i class="fa-solid fa-cart-plus icon"></i>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </nav>
+
 
     <div class="card shadow p-4" style="max-width: 700px; width: 100%;">
         <h2 class="text-center mb-4"> Start Your Journey <span><i class="fa-solid fa-gem"></i></span></h2>
@@ -86,7 +320,7 @@
                     <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
                 </div>
             </div>
-            <button type="button" id="register-btn" class="btn btn-warning w-100">Sign up</button>
+            <button type="button" id="register-btn" class="btn  w-100" style="background-color: var(--pcolor); color: aliceblue;">Sign up</button>
             <p class="text-center mt-3">
                 Already have an account? <a href="login.html" target="_blank">Sign in </a>
             </p>

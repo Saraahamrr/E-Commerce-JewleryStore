@@ -1,3 +1,4 @@
+
 const jewwllaries = new XMLHttpRequest();
 jewwllaries.open("GET", "../jewelry/categories/jewellery.json");
 jewwllaries.send();
@@ -54,25 +55,30 @@ function displayFilteredProducts(filteredProducts) {
 }
 
 //handle jewelry tab 
-function jewelry(){
-    window.location.href = '../jewelry/jewelry.html';
-}
+// function jewelry(){
+// 
+//     window.location.href = '/jewelry.html';
+// }
 
-function navigateToAll() {
-    window.location.href = "../jewelry/categories/all/all.html"; 
-}
-function navigateToBrac() {
-    window.location.href = "../jewelry/categories/bracelets/bracelet.html"; 
-}
+// =======
+//     window.location.href = '../jewelry/jewelry.html';
+// }
 
-function navigateToEar() {
-    window.location.href = "../jewelry/categories/earings/earing.html"; 
-}
+// function navigateToAll() {
+//     window.location.href = "../jewelry/categories/all/all.html"; 
+// }
+// function navigateToBrac() {
+//     window.location.href = "../jewelry/categories/bracelets/bracelet.html"; 
+// }
 
-function navigateToNeck() {
-    window.location.href = "../jewelry/categories/necklesses/neckless.html"; 
-}
+// function navigateToEar() {
+//     window.location.href = "../jewelry/categories/earings/earing.html"; 
+// }
 
-function navigateToRing() {
-    window.location.href = "../jewelry/categories/rings/ring.html"; 
-}
+// function navigateToNeck() {
+//     window.location.href = "../jewelry/categories/necklesses/neckless.html"; 
+// }
+
+// function navigateToRing() {
+//     window.location.href = "../jewelry/categories/rings/ring.html"; 
+// }

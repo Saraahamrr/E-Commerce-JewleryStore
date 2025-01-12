@@ -42,7 +42,7 @@ function loginUser(event) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            window.location.href = '/home.html'; // Redirect to the home page
+            window.location.href = '/index.html'; // Redirect to the home page
         } else {
             alert('Invalid login credentials!');
         }
