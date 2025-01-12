@@ -1,20 +1,14 @@
 [
   {
-    "username": "Rahma",
-    "password": "MSNNRa@1234",
+    "username": "Nour",
+    "password": "$2b$10$4CNs/MCdCSIbUuVrfZp.ROTkIB2icDdcUDTW.tDI0AnO7TiK9sGz.",
     "email": "rmdht857@gmail.com",
     "phone": "01127281299"
   },
   {
-    "username": "Nour",
-    "password": "MNSSia@9865",
+    "username": "Rahma",
+    "password": "$2b$10$NmptH3XhwaKfqvb.LYnZouyWuUjoX3AQ0Bc8UHLBMo/I3OkG5.B8S",
     "email": "rahmamedhat503@gmail.com",
-    "phone": "935866966"
-  },
-  {
-    "username": "Soad",
-    "password": "LLKOi@8765",
-    "email": "nourmedhat.1997@gmail.com",
-    "phone": "012588933"
+    "phone": "02366"
   }
 ]

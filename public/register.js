@@ -61,7 +61,7 @@ document.getElementById("register-btn").addEventListener("click", function () {
                     alert("User already enrolled! Please use a different email.");
                     return; // Don't navigate to OTP page
                 }
-                
+
                 alert(data.message);
                 // Redirect to OTP verification page
                 localStorage.setItem("email", email); // Save email for OTP verification
@@ -73,3 +73,6 @@ document.getElementById("register-btn").addEventListener("click", function () {
             alert("Failed to register user. Please try again.");
         });
 });
+
+
+
