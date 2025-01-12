@@ -1,28 +1,61 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//     const userMenu = document.getElementById("userMenu");
-//     const userName = document.getElementById("userName");
-//     const userEmail = document.getElementById("userEmail");
-//     const logoutBtn = document.getElementById("logoutBtn");
 
-    
-//     const username = "actual_username";
+const jewwllaries = new XMLHttpRequest();
+jewwllaries.open("GET", "../jewelry/categories/jewellery.json");
+jewwllaries.send();
+jewwllaries.onreadystatechange = function () {
+    if (jewwllaries.readyState === 4) {
+        var regOk = new RegExp(/^2\d{2}/);
+        if (String(jewwllaries.status).match(regOk)) {
+            data = JSON.parse(jewwllaries.responseText);
+            const searchInput = document.getElementById("search-input");
+            searchInput.addEventListener("input", function () {
+                let searchText = searchInput.value.toLowerCase();
+                console.log("Search text:", searchText);
 
+                if (searchText === '') {
+                    const productsContainer = document.getElementById("products-container");
+                    productsContainer.innerHTML = '';
+                } else {
+                    let filteredjew = data.filter(product =>
+                        product.title.toLowerCase().includes(searchText)
+                    );
+                    displayFilteredProducts(filteredjew);
+                    console.log(filteredjew);
+                }
 
-//     fetch(`/user-info?username=${username}`)
-//         .then(response => response.json())
-//         .then(data => {
-//             if (data.success) {
-//                 userName.textContent = `Name: ${data.user.username}`;
-//                 userEmail.textContent = `Email: ${data.user.email}`;
-//             } else {
-//                 console.error("Error fetching user data:", data.message);
-//             }
-//         })
-//         .catch(error => console.error("Error:", error));
+            });
+        }
+    }
+}
+function displayFilteredProducts(filteredProducts) {
+    const productsContainer = document.getElementById("products-container");
+    productsContainer.innerHTML = '';
+    if (filteredProducts.length === 0) {
+        productsContainer.innerHTML = "<p>No products found</p>";
+        return;
+    }
+    filteredProducts.forEach(product => {
+        const productDiv = document.createElement("div");
+        productDiv.classList.add("product");
+        productDiv.innerHTML = `
+        <img class="image" src="${product.img}" alt="${product.title}" />
+        <div class="det">
+            <h1 class="title">${product.title}</h1>
+            <p class="description">${product.description}</p>
+            <p class="price">${product.price}</p>
+            <div class="last">
+                <p class="date">${product.date}</p>
+                <button class="addToCart">Add To Cart</button>
+            </div>
+        </div>
+    `;
+        productsContainer.appendChild(productDiv);
 
-    
-//     logoutBtn.addEventListener("click", () => {
-//         alert("Logged out successfully!");
-//         window.location.href = "/login.html";
-//     });
-// });
+    });
+}
+
+//handle jewelry tab 
+function jewelry(){
+    window.location.href = '/jewelry.html';
+}
+

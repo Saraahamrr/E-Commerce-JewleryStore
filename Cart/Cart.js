@@ -33,7 +33,7 @@ const addDataToHTML = () => {
             newProduct.classList.add('item');
             newProduct.dataset.id = product.id; /*adding id to each item using its id in the json file*/
             newProduct.innerHTML = `
-                <img src="${product.img}" alt="">
+                <img src="../jewelry/categories/${product.img}" alt="">
                 <h2>${product.title}</h2>
                 <div class="price">${product.price} EGP </div>
                 <button class="addCart">
@@ -46,19 +46,22 @@ const addDataToHTML = () => {
 };
 
 const initApp = () => {
-    fetch(`jewellery.json`)
-    .then (response => response.json())
-    .then(data => {
-        listProduct = data;
-        addDataToHTML();
+    fetch('../jewelry/categories/jewellery.json')
+        .then(response => response.json())
+        .then(data => {
+            listProduct = data;
 
-        ///// adding to product list by heba//////
-        if (localStorage.getItem('cart')) {
-            cart = JSON.parse(localStorage.getItem('cart'));
+            // Load cart from localStorage
+            if (localStorage.getItem('cart')) {
+                cart = JSON.parse(localStorage.getItem('cart'));
+            }
+
+            // Update cart display
             showCart(cart);
-        }
-    })
-}
+            addDataToHTML();
+        });
+};
+
 
 initApp();
 
@@ -117,52 +120,49 @@ localStorage.setItem('cart', JSON.stringify(cart));
 /* id , image , name ,price , quantity */
 let iconCartspan = document.querySelector('.icon span');
 const showCart = () => {
-let totalQuantity = 0;
-let totalPrice = 0;
+    let totalQuantity = 0;
+    let totalPrice = 0;
+
     cartListHTML.innerHTML = '';
+
     if (cart.length > 0) {
         cart.forEach(item => {
-            totalQuantity += item.quantity;
-            /* find index of the product in the list of products 
-            if using find I will not be able to acces index 
-            to update or remove the item in the cart*/
-            
-            let newProduct = document.createElement('div');
-            newProduct.classList.add('Item');
-            let positioninProductList = listProduct.findIndex((value) => value.id == item.product_id);
-            let infoItem = listProduct[positioninProductList];
-            totalPrice += infoItem.price * item.quantity;
-            newProduct.dataset.id = item.product_id;
-            newProduct.innerHTML = `
-                <div class="image">
-                    <img src="${infoItem.img}" alt="" />
-                </div>
-                <div class="name">${infoItem.title}</div>
-                <div class="price">${infoItem.price * item.quantity}  EGP</div>
-                <div class="quantity">
-                    <span class="minus">-</span>
-                    <span> ${item.quantity} </span>
-                    <span class="plus">+</span>
-                </div>
-                <span class="remove">
-                <i class="fa-solid fa-xmark"></i>
-                </span>
-            `;
-            cartListHTML.appendChild(newProduct);
+            const product = listProduct.find(p => p.id == item.product_id);
+            if (product) {
+                totalQuantity += item.quantity;
+                totalPrice += product.price * item.quantity;
 
-        })
+                let newProduct = document.createElement('div');
+                newProduct.classList.add('Item');
+                newProduct.dataset.id = item.product_id;
+                newProduct.innerHTML = `
+                    <div class="image">
+                        <img src="${product.img}" alt="" />
+                    </div>
+                    <div class="name">${product.title}</div>
+                    <div class="price">${product.price * item.quantity} EGP</div>
+                    <div class="quantity">
+                        <span class="minus">-</span>
+                        <span>${item.quantity}</span>
+                        <span class="plus">+</span>
+                    </div>
+                    <span class="remove">
+                        <i class="fa-solid fa-xmark"></i>
+                    </span>
+                `;
+                cartListHTML.appendChild(newProduct);
+            }
+        });
 
-        let newtotalPrice = document.createElement('div');
-        newtotalPrice.classList.add('total');
-        newtotalPrice.innerHTML = `
+        // Total price section
+        let newTotalPrice = document.createElement('div');
+        newTotalPrice.classList.add('total');
+        newTotalPrice.innerHTML = `
             <h3>
-            Total:
-            <span>${totalPrice}</span>
-            EGP
+                Total: <span>${totalPrice}</span> EGP
             </h3>
         `;
-        cartListHTML.appendChild(newtotalPrice);
-    
+        cartListHTML.appendChild(newTotalPrice);
     }
 
     iconCartspan.textContent = totalQuantity;
