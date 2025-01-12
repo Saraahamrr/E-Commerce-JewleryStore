@@ -57,3 +57,22 @@ function displayFilteredProducts(filteredProducts) {
 function jewelry(){
     window.location.href = '../jewelry/jewelry.html';
 }
+
+function navigateToAll() {
+    window.location.href = "../jewelry/categories/all/all.html"; 
+}
+function navigateToBrac() {
+    window.location.href = "../jewelry/categories/bracelets/bracelet.html"; 
+}
+
+function navigateToEar() {
+    window.location.href = "../jewelry/categories/earings/earing.html"; 
+}
+
+function navigateToNeck() {
+    window.location.href = "../jewelry/categories/necklesses/neckless.html"; 
+}
+
+function navigateToRing() {
+    window.location.href = "../jewelry/categories/rings/ring.html"; 
+}

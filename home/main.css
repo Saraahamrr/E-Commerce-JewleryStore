@@ -703,3 +703,7 @@ ol li {
 }
 
 
+.handleLinks{
+    cursor: pointer;
+    text-decoration: none;
+}
