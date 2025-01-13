@@ -16,6 +16,33 @@
         })();
     </script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+          // Load Cart.html into the placeholder
+          $("#cart_placeholder").load("../all/Cart.html", function() {
+              console.log("Cart.html loaded successfully!");
+          });
+  
+          // Dynamically include Cart.css
+          $("<link>")
+              .attr({
+                  rel: "stylesheet",
+                  type: "text/css",
+                  href: "../all/Cart.css" // Path to Cart.css
+              })
+              .appendTo("head")
+              .on("load", function() {
+                  console.log("Cart.css loaded successfully!");
+              });
+  
+          // Dynamically include Cart.js
+          $.getScript("../all/Cart.js", function() {
+              console.log("Cart.js loaded successfully!");
+          });
+      });
+  </script>
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg ">
@@ -26,9 +53,6 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="/jewelry.html">
@@ -74,7 +98,7 @@
             </div> -->
             <!-- image logo -->
             <div class="center-image d-flex justify-content-center logo-container">
-                <img src="../../../home/images/logo.png" alt="Logo" class="img-fluid logo">
+                <img src="../images/logo.png" alt="Logo" class="img-fluid logo">
             </div>
 
             <!-- search -->
@@ -84,7 +108,10 @@
                     <div class="d-flex justify-content-evenly align-items-center icons-container">
                         <i class="fa-solid fa-magnifying-glass icon"></i>
                         <a href="/login.html"><i class="fa-solid fa-user icon"></i></a>
-                        <i class="fa-solid fa-cart-plus icon"></i>
+                        <div class="icon">
+                            <i id="cart-icon" class="fa-solid fa-cart-shopping" ></i>
+                            <span class="count">0</span>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -93,6 +120,8 @@
         </div>
        
     </nav>
+    <div id="cart_placeholder"></div>
+
     <div id="products-container"></div>
     <h1 class="neck">Necklaces</h1>
     <div id="container"></div>

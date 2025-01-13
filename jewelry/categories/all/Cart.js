@@ -188,5 +188,8 @@ const removeFromCart = (product_id) => {
     }
 }
 
+const checkout = () => {
+    window.location.href = './CheckoutPage/CheckoutPage.html';
+}
 
 

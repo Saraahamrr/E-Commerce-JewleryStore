@@ -18,7 +18,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            
+
             --pcolor: #c25e12;
             padding: 0;
             margin: 0;
@@ -27,6 +27,8 @@
 
 
         }
+
+    
 
         .card {
             margin-top: auto;
@@ -46,7 +48,7 @@
             font-size: 24px;
         }
 
-        
+
         .input-group-text {
             background-color: transparent;
             border: none;
@@ -57,7 +59,7 @@
             width: 100%;
         }
 
-        .input-group .fa-user{
+        .input-group .fa-user {
             margin-left: 5px;
             font-size: 20px;
         }
@@ -79,7 +81,9 @@
 
         }
 
-        .fa-magnifying-glass,.fa-user,.fa-cart-plus{
+        .fa-magnifying-glass,
+        .fa-user,
+        .fa-cart-plus {
             margin: 10px;
             font-size: 20px;
             color: brown;
@@ -163,6 +167,7 @@
             display: flex;
             align-items: center;
             position: relative;
+            margin-left: 70px;
         }
 
         .search-container input {
@@ -205,10 +210,15 @@
         .offcanvas {
             display: none;
         }
+
+        .logo-container {
+            margin-right: 415px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 
-<body >
+<body>
 
 
     <nav class="navbar navbar-expand-lg ">
@@ -218,16 +228,15 @@
             <div class="left-content">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/index.html">Home</a>
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About Us</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link " href="/jewelry.html" >
-                            jewelry
+                        <!-- <a class="nav-link " href="/jewelry.html" onclick="jewelry()" role="button">
+                            jewellery
+                        </a> -->
+                        <a class="nav-link " href="/jewelry.html">
+                            jewellery
                         </a>
-                        
                     </li>
                 </ul>
             </div>
@@ -246,17 +255,14 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About Us</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="/jewelry.html" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">jewelry</a>
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Disabled</a>
                         </li>
-                        
                     </ul>
                 </div>
             </div>
@@ -268,19 +274,22 @@
             <!-- search -->
             <div class="right-content search-container">
                 <form class="d-flex search-container justify-content-between align-items-center" role="search">
-                    <input class="me-2 forminput" type="search" placeholder="Search" aria-label="Search">
-                    <div id="nav-icons" class="d-flex justify-content-evenly align-items-center icons-container">
 
+                    <div class="d-flex justify-content-evenly align-items-center icons-container">
+                        <div class="user-container">
+                            <a href="/login.html" class="user-icon">
+                                <i class="fa-solid fa-user icon"></i>
+                            </a>
 
-                        <i class="fa-solid fa-magnifying-glass icon"></i>
-                        <a href="/login.html"><i class="fa-solid fa-user icon"></i></a>
-
-                        <i class="fa-solid fa-cart-plus icon"></i>
+                            <i class="fa-solid fa-cart-plus icon"></i>
+                        </div>
                     </div>
                 </form>
             </div>
+
         </div>
         </div>
+
     </nav>
 
 

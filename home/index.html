@@ -18,7 +18,6 @@
         })();
     </script>
 
-
 </head>
 
 <body>
@@ -88,18 +87,15 @@
             <!-- search -->
             <div class="right-content search-container">
                 <form class="d-flex search-container justify-content-between align-items-center" role="search">
-                    <input class="me-2 forminput" id="search-input" type="search" placeholder="Search"
-                        aria-label="Search">
+                    
                     <div class="d-flex justify-content-evenly align-items-center icons-container">
-                        <i class="fa-solid fa-magnifying-glass icon"></i>
-
-
-                        <!-- <div class="user-container"> -->
+                        <div class="user-container">
                         <a href="/login.html" class="user-icon">
                             <i class="fa-solid fa-user icon"></i>
                         </a>
 
                         <i class="fa-solid fa-cart-plus icon"></i>
+                    </div>
                     </div>
                 </form>
             </div>
@@ -127,7 +123,7 @@
             <div class="text-content">
                 <h1>Welcome to GleamGem</h1>
                 <p>Your ultimate destination for timeless jewelry pieces.</p>
-                <button class="oval-button" onclick="navigateToAll()">See More</button>
+                <a class="oval-button" href="#Categories">See More</a>
                 <i class="fa-solid fa-arrow-down"></i>
 
             </div>
@@ -161,20 +157,19 @@
             <h2>Categories</h2>
             <div class="cate_list">
                 <ol type="none">
-                    <li onclick="navigateToBrac()">
+                    <li>
                         <span class="number">03</span>
                         <img src="images/bracelets.jpg" class="hover-image">
-
-                        Bracelets
+                     Bracelets
                         <i class="fa-solid fa-arrow-right"></i>
                     </li>
-                    <li onclick="navigateToEar()">
+                    <li>
                         <span class="number">01</span>
                         <img src="images/Earrings.jpg" class="hover-image">
                         Earrings
                         <i class="fa-solid fa-arrow-right"></i>
                     </li>
-                    <li onclick="navigateToNeck()">
+                    <li>
                         <span class="number">03</span>
                         <img src="images/Necklaces .jpg" class="hover-image">
 
@@ -183,7 +178,7 @@
                     </li>
 
 
-                    <li onclick="navigateToRing()">
+                    <li>
                         <span class="number">02</span>
                         <img src="images/rings.jpg" class="hover-image">
 
@@ -205,9 +200,9 @@
                 <p class="p1">If you want</p>
                 <p class="p2">a unique</p>
                 <p class="p3">accessory</p>
-                <a onclick="navigateToAll()" class="handleLinks">See More
+                <!-- <a class="handleLinks">See More
                     <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                </a> -->
             </div>
             <div class="images_ass">
                 <img src="images/uniq5.jpg" class="imag1">

@@ -22,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'home')));
 app.use(express.static(path.join(__dirname, 'Cart')));
 app.use(express.static(path.join(__dirname, 'jewelry')));
+app.use(express.static(path.join(__dirname, 'CheckoutPage')));
 
 // make home / start point from home.html that inside public dir
 app.get('/', (req, res) => {

@@ -121,6 +121,10 @@ nav{
 display: none;
 }
 
+.logo-container{
+    margin-right: 240px;
+}
+
 .mobile-lists {
     display: none !important;
 }
@@ -608,6 +612,7 @@ main{
      border-radius: 50px;  
      background-color: #d1b28f;
     font-size: 16px;
+    color: black;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
@@ -711,6 +716,7 @@ main{
     width: 100%;
     margin-top: 50px;
     position: relative;
+
 }
 .categieries h2 ,
 .accessories h2{

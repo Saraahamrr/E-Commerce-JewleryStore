@@ -20,6 +20,7 @@ fetch(`../jewellery.json`)
     });
 });
 
+
 const addToCartHandler = (productId) => {
     const sortedCart = JSON.parse(localStorage.getItem('cart')) || [];
     const productIndex = sortedCart.findIndex(item => item.product_id === productId);
@@ -31,7 +32,19 @@ const addToCartHandler = (productId) => {
     }
 
     localStorage.setItem('cart', JSON.stringify(sortedCart));
+    updateCartCount();  // Update the cart count after adding an item
     alert('Product added to cart');
+}
+
+const updateCartCount = () => {
+    // Get the cart count from local storage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0); // Calculate the total quantity of items in the cart
+
+    const cartCountElement = document.querySelector('.icon span'); // Get the cart count element
+    if (cartCountElement) {
+        cartCountElement.textContent = cartCount; // Update the span with the cart count
+    }
 }
 
 //handle jewelry tab 
